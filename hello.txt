@@ -2,4 +2,9 @@ user1 add
 
 https://github.com/shuye520comHelloWorld/MyTest.git
 user1 update
+<<<<<<< HEAD
 user1 nihao...
+=======
+
+user2 hello();
+>>>>>>> origin/master
