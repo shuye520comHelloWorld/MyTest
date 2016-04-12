@@ -3,3 +3,4 @@ user1 rrrrrhello;
 usr1 update1
 user4 hello...
 user1 helloworld;
+user1 method();
