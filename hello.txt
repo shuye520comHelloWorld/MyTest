@@ -6,3 +6,4 @@ user1 helloworld;
 user4 addmethod();
 hahahha
 user1 method();
+user1 aaaaaaadd;
