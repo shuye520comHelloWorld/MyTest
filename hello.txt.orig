@@ -6,5 +6,8 @@ user1 helloworld;
 user4 addmethod();
 hahahha
 user1 method();
+<<<<<<< HEAD
 user1 aaaaaaadd;
+=======
 user3 aaaaaaadd;
+>>>>>>> fdd01209633435e000b247a7ae7939d7f30cc17d
