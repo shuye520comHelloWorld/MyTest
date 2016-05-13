@@ -1,0 +1,9 @@
+D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.Services\PinkBus.Services.DataBase\bin\Debug\PinkBus.Services.DataBase.dacpac
+D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.Services\PinkBus.Services.DataBase\bin\Debug\PinkBus.Services.DataBase.dll
+D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.Services\PinkBus.Services.DataBase\bin\Debug\PinkBus.Services.DataBase.pdb
+D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.Services\PinkBus.Services.DataBase\obj\Debug\Model.xml
+D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.Services\PinkBus.Services.DataBase\obj\Debug\refactor.xml
+D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.Services\PinkBus.Services.DataBase\obj\Debug\postdeploy.sql
+D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.Services\PinkBus.Services.DataBase\obj\Debug\predeploy.sql
+D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.Services\PinkBus.Services.DataBase\obj\Debug\PinkBus.Services.DataBase.dll
+D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.Services\PinkBus.Services.DataBase\obj\Debug\PinkBus.Services.DataBase.pdb

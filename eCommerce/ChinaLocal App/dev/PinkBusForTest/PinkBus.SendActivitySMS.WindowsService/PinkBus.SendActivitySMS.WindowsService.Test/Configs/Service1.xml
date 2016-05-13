@@ -1,0 +1,27 @@
+﻿<?xml version="1.0"?>
+<ServiceList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" EventLogName="Application" Name="ServiceHost" xmlns="urn:marykayservice-schema">
+
+  <ServiceDefinition Name="PinkBus.SendActivitySMS.WindowsService">
+    <Description>PinkBus.SendActivitySMS.WindowsService</Description>
+    <Service>
+      <Type>MaryKay.ServiceHost.Workers.TaskMaster, MaryKay.ServiceHost.Workers, Version=1.0.1370.24471, Culture=neutral, PublicKeyToken=null</Type>
+      <Properties xmlns="">
+        <GetWorkThreshold>5</GetWorkThreshold>
+        <LongCheckForWorkInterval>00:30:00</LongCheckForWorkInterval>
+        <GetWork>
+          <Type> PinkBus.SendActivitySMS.WindowsService.StartWork,  PinkBus.SendActivitySMS.WindowsService, Version=1.0.2035.18896, Culture=neutral, PublicKeyToken=null</Type>
+          <Properties>
+            <FilePath>D:\Windows.serviceTest\Config\donotdelete.txt</FilePath>
+          </Properties>
+        </GetWork>
+        <WorkerType> PinkBus.SendActivitySMS.WindowsService.StartWork,  PinkBus.SendActivitySMS.WindowsService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</WorkerType>
+      </Properties>
+    </Service>
+    <CheckForWorkStrategy>
+      <Type>MaryKay.ServiceHost.Workers.StartStrategyAlways, MaryKay.ServiceHost.Workers, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null</Type>
+      <Properties xmlns="">
+      </Properties>
+    </CheckForWorkStrategy>
+    <NumberOfWorkers>1</NumberOfWorkers>
+  </ServiceDefinition>
+</ServiceList>

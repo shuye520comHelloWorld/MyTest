@@ -1,0 +1,101 @@
+﻿@{
+    ViewBag.Title = "签到者名单";
+}
+<div class="filter-form">
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="activityName">签到者姓名：</label>
+            <input type="text" class="form-control form-control-m-w" id="checkin_Name" placeholder=" ">
+        </div>
+        <div class="form-group">
+            <label for="activityName">签到人身份：</label>
+            <select id="checkin_ticketType" class="form-control form-control-m-w">
+                <option value="-1">全部</option>
+                <option value="0">贵宾</option>
+                <option value="1">来宾</option>
+                <option value="2">志愿者</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="activityName">签到状态：</label>
+            <select id="checkin_ticketStatus" class="form-control form-control-m-w">
+                <option value="-1">全部</option>
+                <option value="5">已签到</option>
+                <option value="2">未签到</option>
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="activityName">签到方式：</label>
+            <select id="checkin_checkinType" class="form-control form-control-m-w">
+                <option value="-1">全部</option>
+                <option value="SMS">短信口令</option>
+                <option value="QRCode">二维码</option>
+                <option value="ClientCreateNew">现场填写</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-outline btn-d-m btn-warning searchBtn">查询</button>
+        @Html.ActionLink("导出Excel", "ExportStuCheckin", new { eventkey = Request.QueryString["EventKey"] }, new { Class = "btn btn-outline btn-d-lg btn-success" })
+        <!--<button  href="" class="btn btn-outline btn-d-lg btn-success" id="ExportExcel">导出Excel</button>-->
+    </form>
+</div>
+<div class="CheckinList activity-table" style="min-height:400px">
+
+</div>
+<div class="pagination-row">
+    <nav class="pull-right">
+        
+    </nav>
+    <div class="page-indicator pull-left checkinSummary">
+        贵宾：0/0 &nbsp;&nbsp; 来宾：0/0  &nbsp;&nbsp; 志愿者：0/0
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade activity-modal__detail" id="checkinUserInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-close"></span></button>
+                <h4 class="modal-title" id="myModalLabel">签到者详细信息</h4>
+            </div>
+            <div class="modal-body" id="customer">
+                <div class="row">
+                    <div class="col-sm-7">签到身份：<span class="checkStatuspop"></span></div>
+                    <div class="col-sm-5">姓名：<span class="CustomerName"></span></div>
+                    <div class="col-sm-7">手机号码：<span class="CustomerPhone"></span></div>
+                    <div class="col-sm-5">来宾身份：<span class="IsImportMyCustomer"></span></div>
+                    <div class="col-sm-7">年龄：<span class="age"></span></div>
+                    <div class="col-sm-5">职业：<span class="Career"></span></div>
+                    <div class="col-sm-7">是否上过美容课：<span class="BeautyClass"></span></div>
+                    <div class="col-sm-5">是否使用过产品：<span class="UsedProduct"></span></div>
+                    <div class="col-sm-12">感兴趣的话题：<span class="InterestingTopic"></span></div>
+                    <div class="col-sm-12">用过哪些系列：<span class="UsedSet"></span></div>
+                    <div class="col-sm-12">感兴趣的内容：<span class="InterestInCompany"></span></div>
+                </div>
+            </div>
+            <div class="modal-body" id="volunteer">
+                <div class="row">      
+                    <div class="col-sm-7">签到身份：<span>志愿者</span></div>
+                    <div class="col-sm-5">姓名：<span class="VolunteerName"></span></div>
+                    <div class="col-sm-7">手机号码：<span class="PhoneNumber"></span></div>
+                    <div class="col-sm-5">职级：<span class="Level"></span></div>
+                    <div class="col-sm-12">身份证号码：<span class="ResidenceID"></span></div>
+                    <div class="col-sm-12">联系地址：<span class="Address"></span></div>               
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-d-m btn-danger" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="EventKey" value="@Request.QueryString["EventKey"]" />
+
+@section require{
+    <script type="text/javascript">
+        require(['Views/Checkin'])
+
+    </script>
+}

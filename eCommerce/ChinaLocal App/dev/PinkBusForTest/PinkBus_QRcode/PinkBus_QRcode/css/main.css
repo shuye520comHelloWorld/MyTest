@@ -1,0 +1,8 @@
+html, body {  height: 100%;  margin: 0;  }
+.cards-notice-body {  height: 100%;  background: #f6f6f6;  font-size: .75em;  }
+.cards-notice .cards-header {  background: #FFFFFF;  border-bottom: 1px solid #bfbfbf;  overflow: hidden;  padding: .625em .8333em;  }
+.cards-notice .cards-header:after {  display: block;  content: " ";  clear: both;  }
+.cards-notice .cards-header .header-logo {  background: url("../images/mklogo.png") no-repeat;  -webkit-background-size: 100% 100%;  background-size: 100% 100%;  width: 5.3125em;  height: .84275em;  display: block;  }
+.cards-notice .notice-img {  width: 19em;  display: block;  margin: 5em auto 1em;  }
+.cards-notice-body p {  width: 21em;  margin: 0 auto;  color: #666666;  line-height: 1.6667;  }
+.text-red {  color: #f95086;  }

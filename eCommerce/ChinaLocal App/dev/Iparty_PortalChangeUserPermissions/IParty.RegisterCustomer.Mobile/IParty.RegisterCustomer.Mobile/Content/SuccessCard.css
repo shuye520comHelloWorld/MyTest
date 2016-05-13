@@ -1,0 +1,71 @@
+
+.keep-bottom-wrapper{
+    min-height:100%;
+    position:relative;
+    font-family: "Microsoft YaHei","STHeiti","SimHei","Helvetica",sans-serif;
+}
+.card-get-states{
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+.card-get-states img{
+    width: 34px;
+    height: 34px;
+}
+.con-wave-border{
+   
+}
+.con-wave-border .notice-sum{ 
+    background-image: url("images/wave-border-bg.png");
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    padding: 10px 1em;
+    width: 14em;
+    margin: 0 auto;
+}
+.con-wave-border .notice-info{
+     background-image: url("images/wave-border-bg2.png");
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    padding: 10px;
+}
+.con-wave-border h4{
+    font-size: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: left;
+    padding-left: .25em;
+}
+.con-wave-border a{
+    font-size: 16px;
+}
+.con-wave-border .data-position{
+    font-size: .75em;
+    background: url("images/icon-map.png") no-repeat ;
+    background-position: 0 .25em;
+    padding-left: 1em;
+    margin-left: 13px;
+    text-align: left;
+}
+.con-wave-border .data-time{
+    font-size: .75em;
+    background: url("images/icon-clock.png") no-repeat ;
+    padding-left: 1em;
+    margin-left: 13px;
+    text-align: left;
+    background-position: 0 .25em;
+}
+.con-wave-border .notice-info p{
+    font-size: .75em;
+    color: #999999;
+}
+.keep-bottom-footer {
+    background:#ffffff;
+    border-top: 1px solid #cccccc;
+    width:100%;
+    height:60px;
+    position:absolute;
+    bottom:0;
+    left:0;
+    padding-top: 12px;
+}

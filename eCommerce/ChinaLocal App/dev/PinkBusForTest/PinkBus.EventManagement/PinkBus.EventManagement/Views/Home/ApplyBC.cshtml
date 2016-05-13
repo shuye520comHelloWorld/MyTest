@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "抢报顾问名单";
+    ViewData["UserType"] = PinkBus.EventManagement.Models.EventUserType.NormalBC;
+    ViewData["Import"]=Model.BCImport;
+
+    PinkBus.EventManagement.Models.PB_EventTicketSetting EventTicketSetting = ViewBag.EventTicketSetting;
+}
+
+@model PinkBus.EventManagement.Models.PB_Event
+@if(!Model.BCImport){
+<div class="import__header consultant-import__header">
+    <p>
+        <label>活动名称：</label>
+        <span>@Model.EventTitle</span>
+    </p>
+    <div class="checkbox checkSession">
+        <label class="consultant-import__label checkbox-label">
+            可抢报的活动时段  <span>(可多选)</span>：
+        </label>
+        @foreach (var m in Model.EventSessions)
+        {
+            if (m.NormalTicketQuantity < 1) { continue; }
+            <div class="form-group">
+                <input id="check_@m.SessionKey" type="checkbox" >
+                <label for="check_@m.SessionKey" class="btn btn-danger btn-outline">@(m.SessionStartDate.ToString("MM-dd HH:mm")) ~ @(m.SessionEndDate.ToString("MM-dd HH:mm"))</label>
+            </div>
+
+        }
+
+    </div>
+    <div class="header-import__cards">
+        <div class="form-group">
+            <label for="" class="consultant-import__label">可抢报来宾券总数  <span>(非必填)</span>：</label>
+            <input type="number" class="form-control" id="ApplyTicketTotal" style="width:100px;"  placeholder="默认所有" min="0">
+            <span>张</span>
+        </div>
+        <div class="form-group">
+            <label for="">每人来宾券：</label>
+            <input type="number" class="form-control" id="TicketQuantityPerSession"  placeholder="0" min="0">
+            <span>张</span>
+        </div>
+    </div>
+</div>
+}
+else{
+<div class="import__header consultant-import__header">
+    <p>
+        <span>活动名称：</span>
+        <label>@Model.EventTitle</label>
+    </p>
+    <div class="checkbox checkSession">
+        <span class="consultant-import__label checkbox-label"  style="font-weight:100;">
+            可抢报的活动时段 ：
+        </span>
+        @foreach (var m in Model.EventSessions)
+        {
+            if(m.CanApply){
+            <div class="form-group">
+                <label for="check_@m.SessionKey" class="btn btn-danger" style="background-color:#f05e67; color:#fff; border:0;">@(m.SessionStartDate.ToString("MM-dd HH:mm")) ~ @(m.SessionEndDate.ToString("MM-dd HH:mm"))</label>
+            </div>
+        }
+
+        }
+
+    </div>
+    <div class="header-import__cards">
+        <div class="form-group">
+            <span>可抢报来宾券总数 ：</span>
+            <label>@(EventTicketSetting.ApplyTicketTotal > 0 ? EventTicketSetting.ApplyTicketTotal.ToString() : "默认所有")</label>
+            <label>张</label>
+        </div>
+        <div class="form-group">
+            <span for="">每人来宾券：</span>
+            <label>@EventTicketSetting.TicketQuantityPerSession</label>
+            <label>张</label>
+        </div>
+    </div>
+</div>
+}
+<div id="ConsultantList">
+        @Html.Partial("~/views/home/partial/ConsultantList.cshtml",  ViewBag.Consultants as object, ViewData)
+</div>
+@section require{
+    <script type="text/javascript">
+        require(['Views/applyBC'])
+        
+       
+    </script>
+}

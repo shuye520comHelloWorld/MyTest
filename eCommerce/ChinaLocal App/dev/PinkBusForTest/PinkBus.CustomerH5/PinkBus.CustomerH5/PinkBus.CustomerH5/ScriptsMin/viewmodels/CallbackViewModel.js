@@ -1,0 +1,1 @@
+define(["httpClient"],function(a){var b=new a,c=function(){var a=this;a.SetAccessToken=function(){b.GetAccessToken({},function(a){localStorage.setItem(localStorage.UnionID,a.accessToken),window.location.href=returnUrl})}};return c})

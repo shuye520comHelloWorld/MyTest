@@ -1,0 +1,159 @@
+﻿@{
+    ViewBag.Title = "活动发布管理";
+}
+
+<div class="filter-form">
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="activitySerchName">活动名称：</label>
+            <input type="text" class="form-control form-control-l-w" id="activitySerchName" placeholder=" ">
+        </div>
+        <div class="form-group">
+            <label for="filterStartDate">活动时间：</label>
+            <input type="text" readonly="readonly" class="form-control filter-form-date" id="filterStartDate" placeholder="">
+            <span class="icon-date"></span>
+        </div>
+        <div class="form-group">
+            <label for="filterEndDate">&nbsp;&nbsp;到&nbsp;&nbsp; </label>
+            <input type="text" readonly="readonly" class="form-control filter-form-date" id="filterEndDate" placeholder="">
+            <span class="icon-date"></span>
+        </div>
+        <button type="button" class="btn btn-outline btn-d-m btn-warning" id="SerchEventBtn">查询</button>
+        <button type="reset" class="btn btn-outline btn-d-m btn-success">重置</button>
+    </form>
+</div>
+<div class="activity-btn__create">
+    <button type="button" class="btn btn-danger btn-d-w" data-toggle="modal" data-target="#activityCreate"> <span class="icon-plus" aria-hidden="true"></span> 新建活动</button>
+</div>
+<div class="activity-table" id="EventTableList" style="min-height:500px;">
+    <div style="text-align:center;padding-top:100px;">
+        <img src="~/Content/images/loading.gif" style="margin:0 auto; " /></div>
+</div>
+<div class="pagination-row">
+    <nav class="pull-right">
+
+    </nav>
+    <div class="page-indicator pull-left">
+        显示第 * 至 * 条，共 * 条
+    </div>
+</div>
+<div class="modal fade activity-modal__create" id="activityCreate" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-close"></span></button>
+                <h4 class="modal-title" id="myModalLabel">新建活动</h4>
+            </div>
+            <div class="modal-body form-inline">
+                <form id="CreateEventForm">
+                    <input type="hidden" id="EventKey" />
+                    <div class="activity-modal__header">
+                        <div class="form-group">
+                            <label for="activityName">活动名称：&nbsp; </label>
+                            <input type="text" placeholder="" id="activityName"  class="form-control" name="activityName">
+                        </div>
+                        <div class="form-group">
+                            <label for="activityCity">活动地点：&nbsp; </label>
+                            <input type="text" placeholder="" id="activityCity" class="form-control" name="activityCity">
+                            <button type="button" class="btn btn-sm btn-danger" id="saveEventTitle" style="margin-left: 40px;"> 更新名称和地点</button>
+                        </div>
+                        
+                    </div>
+                    <div class="activity-date__setting">
+                        <div class="form-group">
+                            <label for="activityStartDate">抢报时间：&nbsp; </label>
+                            <input type="text" readonly="readonly" class="form-control filter-form-date" id="activityStartDate" placeholder="" name="activityStartDate">
+                            <span class="icon-date"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="activityEndDate">&nbsp;&nbsp;到&nbsp;&nbsp; </label>
+                            <input type="text" readonly="readonly" class="form-control filter-form-date" id="activityEndDate" placeholder="" name="activityStartDate">
+                            <span class="icon-date"></span>
+                        </div>
+                        <p class="tooltip-notice">
+                            · 在该时间段内顾问可抢报来宾券
+                        </p>
+                        </div>
+                        <div class="activity-date__setting">
+                            <div class="form-group">
+                                <label for="InvitationStartDate">邀约开始时间： </label>
+                                <input type="text" readonly="readonly" class="form-control filter-form-date" id="InvitationStartDate" placeholder="" name="InvitationStartDate">
+                                <span class="icon-date"></span>
+                               
+                            </div><span style="vertical-align:super"> (非必填)</span>
+                            <div class="form-group">
+                                <label for="InvitationEndDate">邀约截止时间： </label>
+                                <input type="text" readonly="readonly" class="form-control filter-form-date" id="InvitationEndDate" placeholder="" name="InvitationEndDate">
+                                <span class="icon-date"></span>
+                            </div>
+                            <p class="tooltip-notice">· 在该时间段之前允许美容顾问（包括志愿者）向顾客发起线上邀约</p>
+                        </div>
+                    <div class="activity-times__setting">
+                        <div class="activity-modal__title"><span class="icon-mark"></span>活动时间及邀请券 <span class="tooltip-notice">( 分场次配置，及对应场次的邀请券数量 )</span></div>
+                        <div class="activity-times_block">
+                            <div class="form-group">
+                                <label for="activityDate1Start" class="activity-times__num">活动时段1：</label>
+                                <input type="hidden" class="TimesNo" value="1" />
+                                <input type="text" readonly="readonly" class="form-control filter-form-date dateStart" id="activityDate1Start" placeholder="" name="activityDate1Start">
+                                <span class="icon-date"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="activityDate1End">&nbsp;&nbsp;到&nbsp;&nbsp; </label>
+                                <input type="text" readonly="readonly" class="form-control filter-form-date dateEnd" id="activityDate1End" placeholder="" name="activityDate1End">
+                                <span class="icon-date"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="activityDate1Num1" class="activity-times__num">贵宾券数：</label>
+                                <input type="number" class="form-control vipTotal" id="activityDate1Num1" oninput="layer.handleInput(event)" placeholder="" min="0" name="activityDate1Num1">
+                            </div>
+                            <div class="form-group">
+                                <label for="activityDate1Num2">&nbsp;来宾券数： &nbsp;</label>
+                                <input type="number" class="form-control normalTotal" id="activityDate1Num2" oninput="layer.handleInput(event)" placeholder="" min="0" name="activityDate1Num2">
+                            </div>
+                        </div>
+                        <div class="activity-times_block">
+                            <div class="form-group">
+                                <label for="activityDate2Start" class="activity-times__num">活动时段2：</label>
+                                <input type="hidden" class="TimesNo" value="2" />
+                                <input type="text" readonly="readonly" class="form-control filter-form-date dateStart" id="activityDate2Start" placeholder="" name="activityDate2Start">
+                                <span class="icon-date"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="activityDate2End">&nbsp;&nbsp;到&nbsp;&nbsp;</label>
+                                <input type="text" readonly="readonly" class="form-control filter-form-date dateEnd" id="activityDate2End" placeholder="" name="activityDate2End">
+                                <span class="icon-date"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="activityDate2Num1" class="activity-times__num">贵宾券数：</label>
+                                <input type="number" class="form-control vipTotal" id="activityDate2Num1" oninput="layer.handleInput(event)" placeholder="" min="0" name="activityDate2Num1">
+                            </div>
+                            <div class="form-group">
+                                <label for="activityDate1Num2">&nbsp;来宾券数： &nbsp;</label>
+                                <input type="number" class="form-control normalTotal" id="activityDate2Num2" oninput="layer.handleInput(event)" placeholder="" min="0" name="activityDate2Num2">
+                            </div>
+                            <div class="activity-times__new">
+                                <span class="icon-add" id="ActiveTimeAdd"></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="activity-modal__footer">
+                    <button type="button" class="btn btn-d-m btn-danger btn-outline" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-d-m btn-danger" id="SaveEventBtn">确认</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section require{
+    
+@*    <script src="~/Scripts/PinkBusJs/lib/layerPager.js"></script>*@
+    <script type="text/javascript">
+        require(["Views/index"])
+
+    </script>
+}

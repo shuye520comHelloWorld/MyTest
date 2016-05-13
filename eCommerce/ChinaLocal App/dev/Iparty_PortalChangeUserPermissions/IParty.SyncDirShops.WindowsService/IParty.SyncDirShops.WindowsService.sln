@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IParty.SyncDirShops.WindowsService", "IParty.SyncDirShops.WindowsService\IParty.SyncDirShops.WindowsService.csproj", "{4F4DC674-C392-46FF-9DF9-67987C6B9CEA}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LocalDLL", "LocalDLL", "{A8E59EBC-10C8-4D5D-8005-FBD2AA4AEEDC}"
+	ProjectSection(WebsiteProperties) = preProject
+		SccProjectName = "SAK"
+		SccAuxPath = "SAK"
+		SccLocalPath = "SAK"
+		SccProvider = "SAK"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/LocalDLL"
+		Debug.AspNetCompiler.PhysicalPath = "LocalDLL\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\LocalDLL\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/LocalDLL"
+		Release.AspNetCompiler.PhysicalPath = "LocalDLL\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\LocalDLL\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "39691"
+		SlnRelativePath = "LocalDLL\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IParty.SyncDirShops.WindowsService.Test", "IParty.SyncDirShops.WindowsService.Test\IParty.SyncDirShops.WindowsService.Test.csproj", "{FCDA3DD7-08A9-46B3-856E-623EBCA1DC70}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Database", "Database\Database.sqlproj", "{497FB433-34D9-4A59-BB57-0D26088D8599}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.mkcorp.com:8080/tfs/upgradedcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = IParty.SyncDirShops.WindowsService.Test\\IParty.SyncDirShops.WindowsService.Test.csproj
+		SccProjectName1 = IParty.SyncDirShops.WindowsService.Test
+		SccLocalPath1 = IParty.SyncDirShops.WindowsService.Test
+		SccProjectUniqueName2 = IParty.SyncDirShops.WindowsService\\IParty.SyncDirShops.WindowsService.csproj
+		SccProjectName2 = IParty.SyncDirShops.WindowsService
+		SccLocalPath2 = IParty.SyncDirShops.WindowsService
+		SccWebProject3 = true
+		SccProjectUniqueName3 = LocalDLL
+		SccProjectName3 = LocalDLL
+		SccLocalPath3 = LocalDLL
+		SccProjectEnlistmentChoice3 = 2
+		SccProjectUniqueName4 = Database\\Database.sqlproj
+		SccProjectName4 = Database
+		SccLocalPath4 = Database
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F4DC674-C392-46FF-9DF9-67987C6B9CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F4DC674-C392-46FF-9DF9-67987C6B9CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F4DC674-C392-46FF-9DF9-67987C6B9CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F4DC674-C392-46FF-9DF9-67987C6B9CEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8E59EBC-10C8-4D5D-8005-FBD2AA4AEEDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8E59EBC-10C8-4D5D-8005-FBD2AA4AEEDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8E59EBC-10C8-4D5D-8005-FBD2AA4AEEDC}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8E59EBC-10C8-4D5D-8005-FBD2AA4AEEDC}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{FCDA3DD7-08A9-46B3-856E-623EBCA1DC70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCDA3DD7-08A9-46B3-856E-623EBCA1DC70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCDA3DD7-08A9-46B3-856E-623EBCA1DC70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCDA3DD7-08A9-46B3-856E-623EBCA1DC70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{497FB433-34D9-4A59-BB57-0D26088D8599}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{497FB433-34D9-4A59-BB57-0D26088D8599}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{497FB433-34D9-4A59-BB57-0D26088D8599}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{497FB433-34D9-4A59-BB57-0D26088D8599}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{497FB433-34D9-4A59-BB57-0D26088D8599}.Release|Any CPU.Build.0 = Release|Any CPU
+		{497FB433-34D9-4A59-BB57-0D26088D8599}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

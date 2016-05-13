@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title</title>
+    <script type="text/javascript">
+        var miniJs = '@(PinkBus.EventManagement.Helper.AppSetting.JsMini)';
+        var Application = '@(PinkBus.EventManagement.Helper.AppSetting.Application)';
+        var Ver = '@(PinkBus.EventManagement.Helper.AppSetting.Ver)';
+    </script>
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+
+    @if (bool.Parse(PinkBus.EventManagement.Helper.AppSetting.JsMini))
+    {
+        <script src="~/Scripts/PinkBusJsMini/PinkBusJs/lib/require.js"></script>
+        <script src="~/Scripts/PinkBusJsMini/PinkBusJs/main.js"></script>
+    }
+    else
+    {
+        <script src="~/Scripts/PinkBusJs/lib/require.js"></script>
+        <script src="~/Scripts/PinkBusJs/main.js"></script>
+    }
+
+    @RenderSection("require", required: false)
+</head>
+<body class="activity-management">
+    <div class="page-header">
+        <h1>@ViewBag.Title</h1>
+    </div>
+    @RenderBody()
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

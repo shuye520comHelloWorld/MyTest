@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "邀约者名单";
+}
+<div class="filter-form">
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="activityName">直销员编号：</label>
+            <input type="text" class="form-control form-control-l-w" id="SellerId" placeholder=" ">
+        </div>
+        <div class="form-group">
+            <label for="activityName">顾问名称：</label>
+            <input type="text" class="form-control form-control-l-w" id="BCName" placeholder=" ">
+        </div>
+        <button type="button" class="btn btn-outline btn-d-m btn-warning searchBtn">查询</button>
+        @Html.ActionLink("导出Excel", "ExportStuInviter", new { eventkey = Request.QueryString["EventKey"] }, new { Class="btn btn-outline btn-d-lg btn-success"})
+        <!--<button type="reset" class="btn btn-outline btn-d-lg btn-success">导出Excel</button>-->
+    </form>
+</div>
+
+<div class="activity-table InviterList" style="min-height:400px">
+
+</div>
+<div class="pagination-row">
+    <nav class="pull-right">
+
+    </nav>
+    <div class="page-indicator pull-left">
+        邀约者总数：<span id="InviterCountSpan"></span>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade activity-modal__detail" id="InviterCusModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-close"></span></button>
+                <h4 class="modal-title" id="myModalLabel">邀约顾客信息</h4>
+            </div>
+            <div class="modal-body"style="min-height:200px;">
+
+                <div class="row">
+                    <div class="col-xs-12 modal-table">
+                        <table  class="table">
+                            <thead>
+                            <tr>
+                                <th align="center">序号</th>
+                                <th align="center">身份</th>
+                                <th align="center">姓名</th>
+                                <th align="center">手机</th>
+                            </tr>
+                            </thead>
+                            <tbody id="seeCustomerlist">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-d-m btn-danger" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="EventKey" value="@Request.QueryString["EventKey"]" />
+
+
+@section require{
+    <script type="text/javascript">
+        require(['Views/inviter'])
+
+    </script>
+}
+

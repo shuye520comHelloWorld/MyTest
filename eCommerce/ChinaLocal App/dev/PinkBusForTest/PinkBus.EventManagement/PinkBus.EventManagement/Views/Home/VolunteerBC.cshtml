@@ -1,0 +1,50 @@
+﻿@using PinkBus.EventManagement.Models;
+@{
+    ViewBag.Title = "志愿者名单";
+    ViewData["UserType"] =  EventUserType.VolunteerBC;
+    ViewData["Import"] = Model.VolunteerImport;
+    PinkBus.EventManagement.Models.PB_EventTicketSetting EventTicketSetting = ViewBag.EventTicketSetting;
+}
+
+@model PB_Event
+
+<div class="import__header volunteer-import__header">
+    <p><span>活动名称：</span> <label>@Model.EventTitle</label></p>
+    <div class="header-import__cards">
+        <div class="form-group">
+            <span  class="consultant-import__label">每人贵宾券：</span>
+            @if (!Model.VolunteerImport)
+            {
+                <input type="number" class="form-control" id="VIPTicketQuantityPerPerson" oninput="layer.handleInput(event)" placeholder="" min="0">
+
+            }
+            else
+            {
+                <span>@EventTicketSetting.VolunteerVIPTicketCountPerPerson</span>
+            }
+            <span>张</span>
+        </div>
+        <div class="form-group">
+            <span>每人来宾券：</span>
+            @if (!Model.VolunteerImport)
+            {
+                <input type="number" class="form-control" id="NormalTicketQuantityPerPerson" oninput="layer.handleInput(event)" placeholder="" min="0">
+            }
+            else
+            {
+                <span>@EventTicketSetting.VolunteerNormalTicketCountPerPerson</span>
+            }
+            <span>张</span>
+        </div>
+    </div>
+</div>
+<div>
+@Html.Partial("~/views/home/partial/ConsultantList.cshtml",ViewBag.Consultants as object,ViewData)
+    </div>
+
+@section require{
+    <script type="text/javascript">
+        require(['Views/volunteerBC'])
+        
+    </script>
+}

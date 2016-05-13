@@ -1,0 +1,29 @@
+﻿<?xml version="1.0"?>
+<ServiceList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" EventLogName="Application" Name="ServiceHost" xmlns="urn:marykayservice-schema">
+
+  <ServiceDefinition Name="IParty.SyncOrdersAndLevel.WindowsService">
+    <Description>IParty.SyncOrdersAndLevel.WindowsService</Description>
+    <Service>
+      <Type>MaryKay.ServiceHost.Workers.TaskMaster, MaryKay.ServiceHost.Workers, Version=1.0.1370.24471, Culture=neutral, PublicKeyToken=null</Type>
+      <Properties xmlns="">
+        <GetWorkThreshold>1</GetWorkThreshold>
+        <LongCheckForWorkInterval>00:30:00</LongCheckForWorkInterval>
+        <GetWork>
+          <Type>IParty.SyncOrdersAndLevel.WindowsService.SyncOrdersWorkStart, IParty.SyncOrdersAndLevel.WindowsService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Type>
+          <Properties>
+            <FilePath>D:\Windows.serviceTest\Config\donotdelete.txt</FilePath>
+          </Properties>
+        </GetWork>
+        <WorkerType>IParty.SyncOrdersAndLevel.WindowsService.SyncOrdersWorkStart, IParty.SyncOrdersAndLevel.WindowsService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</WorkerType>
+      </Properties>
+    </Service>
+    <CheckForWorkStrategy>
+      <Type>MaryKay.ServiceHost.Workers.StartStrategyDaily, MaryKay.ServiceHost.Workers, Version=4.0.0.0, Culture=neutral, PublicKeyToken=null</Type>
+      <Properties xmlns="" >
+        <Time>00:30:00</Time>
+      </Properties>
+    </CheckForWorkStrategy>
+    <NumberOfWorkers>1</NumberOfWorkers>
+  </ServiceDefinition>
+
+</ServiceList>

@@ -1,0 +1,1966 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MaryKay.ServiceHost.Workers</name>
+    </assembly>
+    <members>
+        <member name="T:MaryKay.ServiceHost.Workers.ServiceStatusType">
+            <summary>
+            The ServiceStatusType enumeration defines the possible states
+            a service can be in.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceStatusType.Initializing">
+            <summary>
+            Indicates the service is not yet ready to start.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceStatusType.Running">
+            <summary>
+            Indicates the service is running.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceStatusType.Stopped">
+            <summary>
+            Indicates the service has been stopped.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceStatusType.Paused">
+            <summary>
+            Indicates the service has been paused.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.GetWorkStrategyUnc">
+            <summary>
+            The GetWorkStrategyUnc get work strategy will look for files matching the
+            specified type in the specified folder.  Each file will be added to the 
+            work queue using the AddTask delegate.  The ID will be the fully qualified
+            filename and the Task will also be the fully qualified filename.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.IGetWorkStrategy">
+            <summary>
+            The GetWorkStrategy is used to retrieve additional work upon
+            request.  It defines the GetWork method that retrieves work to
+            fill the work queue when requested.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.IGetWorkStrategy.GetWork(MaryKay.ServiceHost.Workers.AddTask)">
+            <summary>
+            The GetWork method should retrieve outstanding work and
+            add them to the work queue using the addTask delegate.
+            </summary>
+            <param name="addTask">The delegate to use to add work to the work queue.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.IGetWorkStrategy.Initialize(System.Xml.XmlNode)">
+            <summary>
+            The Initialize method is used to initialize the get work
+            strategy.  The strategy should read and store any required
+            properties passed into it.
+            </summary>
+            <param name="getWorkProperties">The properties for the get work strategy</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.GetWorkStrategyUnc.Initialize(System.Xml.XmlNode)">
+            <summary>
+            Initialize is used to store required properties and initialize the 
+            get work strategy.
+            </summary>
+            <param name="getWorkProperties">Provides access to the properties
+            for the get work strategy that were in the Xml service configuration
+            file.</param>
+            <remarks>
+            The GetWorkStrategyUnc strategy has a required property of FilePath.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.GetWorkStrategyUnc.GetWork(MaryKay.ServiceHost.Workers.AddTask)">
+            <summary>
+            The Get work method will look for files that match the specified file path and
+            then add them to the work queue using the AddTask delegate.  The filename will
+            be both the task's ID and Task value.
+            </summary>
+            <param name="addTask">The addTask delegate is used to add tasks to the work queue.</param>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.StartStrategyPause">
+            <summary>
+            The StartStrategyPause check for work strategy is a strategy that
+            instructs the framework to run based on the specified interval.
+            </summary>
+            <remarks>
+            This check for work strategy will always wait the specified interval before
+            running the service again.
+            </remarks>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.StartStrategyBase">
+            <summary>
+            Abstract class from which start strategy implementations are derived
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.IStartStrategy">
+            <summary>
+            The IStartStrategy class is used to determine when a process should start.
+            It defines the WaitForWork method that returns when the process should start.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.IStartStrategy.Initialize(System.Xml.XmlNode)">
+            <summary>
+            The Initialize method is used to initialize the check for work
+            strategy.  The strategy should read and store any required
+            properties passed into it.
+            </summary>
+            <param name="checkForWorkProperties">The properties for the check for work strategy</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.IStartStrategy.WaitUntilStart">
+            <summary>
+            The WaitUntilStart method checks for work and should return only when
+            the process should be ran.  The WaitUntilStart method should catch and 
+            handle all errors except for ThreadInterruptedException exceptions.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.IStartStrategy.ShouldStart">
+            <summary>
+            The ShouldStart method is used to determine if the WaitUntilStart method will
+            return immediately.  It should not be used instead of WaitUntilStart.
+            </summary>
+            <returns>Returns true if WaitUntilStart will immediately return false otherwise.</returns>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.IStartStrategy.ServiceName">
+            <summary>
+            Gets or sets the name of the service by which the start
+            strategy is being employed
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyBase.GetRegistryKey(System.Boolean)">
+            <summary>
+            Gets the registry key used to save the last run time
+            between executions of the service
+            </summary>
+            <param name="create">Indicates whether or not the key
+            should be created if it does not exist</param>
+            <returns>The registry key, or null if the value does
+            not exists and create is false or the method was
+            not able to create the key</returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyBase.Initialize(System.Xml.XmlNode)">
+            <summary>
+            Initializes the instance
+            </summary>
+            <param name="checkForWorkProperties">Contains configuration information</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyBase.WaitUntilStart">
+            <summary>
+            Blocks the thread until ready to start
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyBase.ShouldStart">
+            <summary>
+            Returns a boolean value indicating whether or
+            not the service should begin working
+            </summary>
+            <returns>True if the service should beging working, false if not</returns>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.StartStrategyBase.LastRunTime">
+            <summary>
+            Gets the date and time of the last execution of the service
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.StartStrategyBase.ServiceName">
+            <summary>
+            Gets or sets the name of the service by which the instance
+            is being employed
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyPause.Initialize(System.Xml.XmlNode)">
+            <summary>
+            The Initialize method will verify that an Interval property has been
+            specified and save it internally.
+            </summary>
+            <param name="StartStrategyProperties">Provides access to the properties
+            for the check for work strategy that were in the Xml service configuration
+            file.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyPause.WaitUntilStart">
+            <summary>
+            The WaitUntilStart method will return once the specified Interval has elapsed.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyPause.ShouldStart">
+            <summary>
+            The ShouldStart method is used to determine if the WaitUntilStart method will
+            return immediately.  It should not be used instead of WaitUntilStart.
+            </summary>
+            <returns>Returns true if WaitUntilStart will immediately return false otherwise.</returns>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.ServiceDefinition">
+            <summary>
+            The ServiceDefinition structure holds the values stored in
+            the Xml configuration file for the service.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceDefinition.Status">
+            <summary>
+            The current status of the service.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceDefinition.Name">
+            <summary>
+            The name of the service.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceDefinition.Description">
+            <summary>
+            The description of the service.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceDefinition.GroupName">
+            <summary>
+            The group name that this service is in.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceDefinition.EventLogName">
+            <summary>
+            The event log name to use for this service.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceDefinition.ServiceType">
+            <summary>
+            The fully qualified assembly name of the service.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceDefinition.CheckForWorkType">
+            <summary>
+            The fully qualified assembly name of the check for work strategy of the service.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceDefinition.NumberOfWorkers">
+            <summary>
+            The number of workers to create for the service.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceDefinition.Properties">
+            <summary>
+            The properties of the service.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.WorkerStateType">
+            <summary>
+            The WorkerStateType enumeration defines the possible states
+            a worker can be in.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.WorkerStateType.Available">
+            <summary>
+            Indicates the worker is available.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.WorkerStateType.Busy">
+            <summary>
+            Indicates the worker is busy.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.StartStrategyWeekly">
+            <summary>
+            The StartStrategyWeekly start strategy will start the service at
+            the specified time each week.
+            </summary>
+            <remarks>
+            If the Interval property is set to every 10 minutes and the worker takes
+            2 minutes to run then this check for work strategy will wait for 8 minutes
+            and then run the service again.  If the service takes longer than the specified
+            interval this check for work strategy will immediatley restart the service.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyWeekly.Initialize(System.Xml.XmlNode)">
+            <summary>
+            The Initialize method will verify that an Interval property has been
+            specified and save it internally.
+            </summary>
+            <param name="StartStrategyProperties">Provides access to the properties
+            for the check for work strategy that were in the Xml service configuration
+            file.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyWeekly.WaitUntilStart">
+            <summary>
+            The WaitUntilStart method will return once the specified Time has passed.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyWeekly.ShouldStart">
+            <summary>
+            The ShouldStart method is used to determine if the WaitUntilStart method will
+            return immediately.  It should not be used instead of WaitUntilStart.
+            </summary>
+            <returns>Returns true if WaitUntilStart will immediately return false otherwise.</returns>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.InvalidConfigValueException">
+            <summary>
+            Contains information about a configuration property
+            for which an invalid value was specified
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.ConfigValueException">
+            <summary>
+            Contains information about an exception in which a required
+            configuration value was not supplied to a component
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ConfigValueException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+            Creates a new instance of ConfigValueException
+            </summary>
+            <param name="propertyName">The name of the property for which an error has been detected</param>
+            <param name="message">A description of the exception</param>
+            <param name="innerException">The cause of the exception</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ConfigValueException.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new instance of ConfigValueException
+            </summary>
+            <param name="propertyName">The name of the property for which an error has been detected</param>
+            <param name="message">A description of the exception</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ConfigValueException.#ctor(System.String)">
+            <summary>
+            Creates a new instance of ConfigValueException
+            </summary>
+            <param name="propertyName">The name of the property for which an error has been detected</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ConfigValueException.GetDefaultMessage(System.String)">
+            <summary>
+            Gets the default message for the exception
+            </summary>
+            <param name="propertyName">The name of the configuration property in question</param>
+            <returns>The default message</returns>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.ConfigValueException.PropertyName">
+            <summary>
+            Gets the name of the property with which a problem has 
+            been encountered
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.InvalidConfigValueException.#ctor(System.String,System.String,System.String,System.Exception)">
+            <summary>
+            Creates a new instance of InvalidConfigValueException
+            </summary>
+            <param name="propertyName">The name of the configuration property for which
+            an invalid value has been specified</param>
+            <param name="specifiedValue">The invalid value that has been specified</param>
+            <param name="message">A message about the exception</param>
+            <param name="innerException">The cause of the exception</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.InvalidConfigValueException.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Creates a new instance of InvalidConfigValueException
+            </summary>
+            <param name="propertyName">The name of the configuration property for which
+            an invalid value has been specified</param>
+            <param name="specifiedValue">The invalid value that has been specified</param>
+            <param name="message">A message about the exception</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.InvalidConfigValueException.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new instance of InvalidConfigValueException
+            </summary>
+            <param name="propertyName">The name of the configuration property for which
+            an invalid value has been specified</param>
+            <param name="specifiedValue">The invalid value that has been specified</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.InvalidConfigValueException.GetDefaultMessage(System.String,System.String)">
+            <summary>
+            Gets the default message for the exception
+            </summary>
+            <param name="propertyName">The name of the configuration property for which
+            an invalid value has been specified</param>
+            <param name="specifiedValue">The invalid value that has been specified</param>
+            <returns>The default message</returns>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.InvalidConfigValueException.SpecifiedValue">
+            <summary>
+            Gets the invalid value that was specified for the property
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.Worker">
+            <summary>
+            The Worker class contains the base funcationality for a service.
+            It defines the PerformWork method that is used to customize the work performed by a service.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.ServiceBase">
+            <summary>
+            The ServiceBase classs provides the base functionality for a MaryKay.ServiceHost
+            service.  It provides the necessary responses to the start, pause, continue and
+            stop requests by the Service Control Manager (SCM).  Additionally, it provides
+            support for debugging the service by supporting the IControl interface which
+            allows a test application to interact with the service like the SCM would.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.IControl">
+            <summary>
+            The IControl interface is used to control MaryKay services that
+            derive from MaryKay.ServiceHost.ServiceBase.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.IControl.Continue">
+            <summary>
+            The Continue method will call the service's OnContinue method.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.IControl.Pause">
+            <summary>
+            The Pause method will call the service's OnPause method.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.IControl.Start(System.String[])">
+            <summary>
+            The Start method will call the service's OnStart method.
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.IControl.Stop">
+            <summary>
+            The Stop method will call the service's OnStop method.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.#ctor(MaryKay.ServiceHost.Workers.ServiceDefinition)">
+            <summary>
+            Initialize a new instance of ServiceBase class.
+            </summary>
+            <param name="serviceDefinition">The service definition that provides all of the properties
+            for the service.</param>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceBase.TraceLevelSwitch">
+            <summary>
+            The trace level used for the entire application
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceBase._process">
+            <summary>
+            Process definition information taken from the XML configuration file.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.ServiceBase._startArguments">
+            <summary>
+            The arguments passed to the ServiceHost process.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.CreateLogClass">
+            <summary>
+             Initializes the event log source and creates an EventLog instance that
+             is used to write entries to the event log.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.DeleteLogClass">
+            <summary>
+            Removes the event log source if it was added during initialization
+            and closes the EventLog instance.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.IncrementFailure">
+            <summary>
+            Used to increment the performance counters that have been added
+            and should be incremented if a task fails to complete sucessfully.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.IncrementSuccess">
+            <summary>
+            Used to increment the performance counters that have been added
+            and should be incremented if a task completes sucessfully.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.PerfmonInstall">
+            <summary>
+            Used to install the performance category and counters.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.PerfmonUninstall">
+            <summary>
+            Used to remove the performance category and counters if they were added by this process.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.AddPerfCounter(System.String,System.String,System.Diagnostics.PerformanceCounterType,System.Int64,System.Boolean,System.Boolean)">
+            <summary>
+            Used to add a performance counter for this process.
+            </summary>
+            <param name="counterName">Name of the performance counter.</param>
+            <param name="counterDescription">The description for the performance counter</param>
+            <param name="counterType">The type of the performance counter.</param>
+            <param name="initialValue">The initial value for this performance counter.</param>
+            <param name="incrementOnSuccess">Whether or not to increment this performance counter upon sucessful completion of a task.</param>
+            <param name="incrementOnFailure">Whether or not to increment this performance counter upon failure of a task.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.CheckForWork">
+            <summary>
+            A pass through method for the CheckForWork method of the check for work strategy.
+            </summary>
+            <returns>True if the WaitForWork method of the check for work strategy will return immediately otherwise false.</returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.Continue">
+            <summary>
+            Virtual method used to notify the process that it should continue.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.IncrementCounter(System.String)">
+            <summary>
+            Used to increment a performance counter.
+            </summary>
+            <param name="counterName">Performance counter name to increment.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.IncrementCounter(System.String,System.Int32)">
+            <summary>
+            Used to increment a performance counter by a specific amount.
+            </summary>
+            <param name="counterName">Performance counter name to increment.</param>
+            <param name="value">Amount to increment the counter by.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.Initialize">
+            <summary>
+            Used to allow the process to initialize.
+            </summary>
+            <remarks> Some actions that should be done in this method include:
+            <list type="bullet">
+            <item>adding performance counters using the AddPerfCounter method</item>
+            <item>reading and saving any required properties</item>
+            <item>initializing the process</item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.JobComplete">
+            <summary>
+            Used to signify a job has been sucessfully completed.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.JobFail">
+            <summary>
+            Used to signify a job has failed.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.LogError(System.String,System.Int32)">
+            <summary>
+            Used to log an error message.
+            </summary>
+            <param name="message">The message to write</param>
+            <param name="EventID">The event id for this event</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.LogError(System.String)">
+            <summary>
+            Used to log an error message.
+            </summary>
+            <param name="message">The message to write</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.LogInformation(System.String,System.Int32)">
+            <summary>
+            Used to log an informational message.
+            </summary>
+            <param name="message">The message to write</param>
+            <param name="EventID">The event id for this event</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.LogInformation(System.String)">
+            <summary>
+            Used to log an informational message.
+            </summary>
+            <param name="message">The message to write</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.LogVerbose(System.String)">
+            <summary>
+            Used to log a verbose message.
+            </summary>
+            <param name="message">The message to write</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.LogVerbose(System.String,System.Object[])">
+            <summary>
+            Used to log a verbose message.
+            </summary>
+            <param name="format">The format string used to build the message</param>
+            <param name="args">Information used to populate the format string</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.LogWarning(System.String,System.Int32)">
+            <summary>
+            Used to log a warning message.
+            </summary>
+            <param name="message">The message to write</param>
+            <param name="EventID">The event id for this event</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.LogWarning(System.String)">
+            <summary>
+            Used to log a warning message.
+            </summary>
+            <param name="message">The message to write</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.Pause">
+            <summary>
+            Virtual method used to notify the process that it should pause.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.Start">
+            <summary>
+            Abstract method used to notify the process that it should start.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.Stop">
+            <summary>
+            Virtual method used to notify the process that it should stop.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.Terminate">
+            <summary>
+            Used to allow the process to clean up any resources before terminating.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.WaitForWork">
+            <summary>
+            A pass through method for the WaitForWork method of the check for work strategy.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.GetProperty(System.String)">
+            <summary>
+            Read only access to the properties for this process as defined in the
+            XML configuration file for this process.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.SetStartStrategy(MaryKay.ServiceHost.Workers.IStartStrategy)">
+            <summary>
+            Used to set the check for work strategy for this process.
+            </summary>
+            <param name="startStrategy"></param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.MaryKay#ServiceHost#Workers#IControl#Continue">
+            <summary>
+            Will cause the process to continue.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.MaryKay#ServiceHost#Workers#IControl#Pause">
+            <summary>
+            Will cause the process to pause.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.MaryKay#ServiceHost#Workers#IControl#Start(System.String[])">
+            <summary>
+            Will cause the process to start.
+            </summary>
+            <param name="args">Any arguments required by the process</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.MaryKay#ServiceHost#Workers#IControl#Stop">
+            <summary>
+            Will cause the process to stop.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.OnContinue">
+            <summary>
+            Used to cause the process to continue.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.OnPause">
+            <summary>
+            Used to cause the process to pause.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.OnShutdown">
+            <summary>
+            Used to cause the process to stop.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.OnStart(System.String[])">
+            <summary>
+            Used to cause the process to start.
+            </summary>
+            <param name="args">Any arguments required by the process.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBase.OnStop">
+            <summary>
+            Used to cause the process to stop.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.ServiceBase.Process">
+            <summary>
+            Read only access to the process definition information.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.ServiceBase.CategoryHelpText">
+            <summary>
+            This processes performance counter category help text.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.ServiceBase.CategoryName">
+            <summary>
+            This processes performance counter category name.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.ServiceBase.StartArguments">
+            <summary>
+            Read only access to the command line parameters passed to the ServiceHost.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.ServiceBase.Item(System.String)">
+            <summary>
+            Read only access to the properties for this process as defined in the
+            XML configuration file for this process.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Worker.#ctor(MaryKay.ServiceHost.Workers.ServiceDefinition)">
+            <summary>
+            Initialize a new instance of the Worker class.
+            </summary>
+            <param name="serviceDefinition">The service definition to use to initialize the service.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Worker.PerformWorkController">
+            <summary>
+            The worker thread that operates off the service thread to perform the
+            service work.  The thread is stopped when the running flag is set to
+            false.  The thread is paused when the paused flag is set to true.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Worker.Continue">
+            <summary>
+            Used to cause the worker to continue.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Worker.OnContinue">
+            <summary>
+            Virtual method used to notify the process that it should continue.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Worker.PerformWork">
+            <summary>
+            Virtual method to perform the required work.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Worker.Pause">
+            <summary>
+            Used to cause the worker to pause.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Worker.OnPause">
+            <summary>
+            Virtual method used to notify the process that it should pause.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Worker.SetState(MaryKay.ServiceHost.Workers.WorkerStateType)">
+            <summary>
+            Used by derived classes to set the internal state of this worker.
+            </summary>
+            <param name="value">The new state value.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Worker.Start">
+            <summary>
+            Used to cause the worker to start.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Worker.OnStart">
+            <summary>
+            Virtual method used to notify the process that it should start.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Worker.Stop">
+            <summary>
+            Used to cause the worker to stop.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Worker.OnStop">
+            <summary>
+            Virtual method used to notify the process that it should stop.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.Worker.State">
+            <summary>
+            Read only value that represents the internal state of this worker.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.StartStrategyUncManualRun">
+            <summary>
+            The StartStrategyUncManualRun strategy run the service if one or more files
+            matching the specified type in the specified folder. It deletes the file so as
+            to not run again.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyUncManualRun.Initialize(System.Xml.XmlNode)">
+            <summary>
+            Initialize is used to store required properties and initialize the 
+            check for work strategy.
+            </summary>
+            <param name="StartStrategyProperties">Provides access to the properties
+            for the check for work strategy that were in the Xml service configuration
+            file.</param>
+            <remarks>
+            The StartStrategyUnc strategy has required properties of Interval,
+            and FilePath.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyUncManualRun.WaitUntilStart">
+            <summary>
+            The WaitUntilStart method will continue to look for the specified file(s) and
+            once a file match is found the method will return.  If no work is available
+            it will sleep for the interval specified before it rechecks for work again.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyUncManualRun.ShouldStart">
+            <summary>
+            The ShouldStart method is used to determine if the WaitUntilStart method will
+            return immediately.  It should not be used instead of WaitUntilStart.
+            </summary>
+            <returns>Returns true if WaitUntilStart will immediately return false otherwise.</returns>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.TaskWorker">
+            <summary>
+            The TaskWorker class is a base class that can be used by developers to
+            create multi-threaded services.  This class is part of the MaryKay.ServiceHost
+            framework.
+            </summary>
+            <remarks>
+            The PerformWork method should be overridden to provide the required functionality
+            of the service.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskWorker.#ctor(System.Object,System.Object,MaryKay.ServiceHost.Workers.TaskMaster)">
+            <summary>
+            Initialize a new instance of the TaskWorker class.
+            </summary>
+            <param name="id">The identifier of the work to work on.</param>
+            <param name="task">The task to work on.</param>
+            <param name="master">A reference to the TaskMaster for this worker.</param>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.TaskWorker.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.TaskWorker.ID">
+            <summary>
+            The ID of the task to work on.  The ID will be a string value.
+            </summary>
+            <remarks>
+            If the Sql get work strategy is used for the service the ID value will be
+            the ToString value of the first column.
+            If the Unc get work strategy is used for the service the ID value will be
+            the filename.
+            </remarks>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.TaskWorker.Task">
+            <summary>
+            The Task to work on.  The type of the Task object will vary depending
+            on the get work strategy used for the service.
+            </summary>
+            <remarks>
+            If the Sql get work strategy is used for the service the Task value will
+            be a DataRow.
+            If the Unc get work strategy is used for the service the Task value will
+            be the filename.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskWorker.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskWorker.TaskComplete">
+            <summary>
+            Used to signify a task has been sucessfully completed.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskWorker.TaskFail">
+            <summary>
+            Used to signify a job has failed.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskWorker.GetProperty(System.String)">
+            <summary>
+            Read only access to the properties of this process.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskWorker.LogError(System.String)">
+            <summary>
+            Used to log an error message.
+            </summary>
+            <param name="message">The message to write</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskWorker.LogInformation(System.String)">
+            <summary>
+            Used to log an informational message.
+            </summary>
+            <param name="message">The message to write</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskWorker.LogVerbose(System.String)">
+            <summary>
+            Used to log a verbose message.
+            </summary>
+            <param name="message">The message to write</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskWorker.LogWarning(System.String)">
+            <summary>
+            Used to log a warning message.
+            </summary>
+            <param name="message">The message to write</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskWorker.PerformWork">
+            <summary>
+            Virtual method to perform the required work.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskWorker.GetPerformWorkDelegate">
+            <summary>
+            Used to obtain the delegate that will perform the actual work.
+            </summary>
+            <returns>A delegate that can perform the work required.</returns>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.TaskWorker.Master">
+            <summary>
+            The task master for this worker.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.TaskWorker.Item(System.String)">
+            <summary>
+            Read only access to the properties of this process.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq">
+            <summary>
+            IGetWorkStrategy implementation that queries an MSMQ queue.
+            The work item passed off to the worker thread will by
+            the object represented by the body of the message. The ID
+            will be the Id property of the Message object.
+            </summary>
+            <remarks>When setting up a service using this work strategy, the
+            following properties must be included:
+            <ul>
+            <li>
+            <b>TimeoutInterval</b>:
+            The amount of time to wait for a response from the message queue 
+            server before terminating the message request
+            <p>If no messages are available in the queue at the time 
+            GetWork is called, the method is exited and attempted again
+            after the amount of time specified by LongCheckForWorkInterval.</p>
+            </li>
+            <li>
+            <b>MessageReadLimit</b>:
+            The maximum number of messages to read from the queue
+            before exiting the GetWork method
+            <p>If messages are available in the queue at the time 
+            GetWork is called, the method will continue to query
+            the server until no more messages are received or until
+            the maximum number of messages are received. Setting this
+            value prevents the service from becoming unresponsive to
+            service control requests (Start, Stop, Pause, Continue)
+            because the GetWork method is constantly executing.</p>
+            </li>
+            <li>
+            <b>Queue/Path</b>:
+            The path to the message queue to be queried
+            <p>See the MSDN documentation for
+            System.Messaging.MessageQueue for details
+            on this property.</p>
+            </li>
+            </ul>
+            </remarks>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq.TRACE_CATEGORY">
+            <summary>
+            The category to be written to the trace output
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq.GetFormatterFromTypeName(System.String)">
+            <summary>
+            Creates and returns an instance of the specified type that implements 
+            IMessageFormatter
+            </summary>
+            <param name="typeName">The fully qualified name of the 
+            type to be instantiated</param>
+            <returns>The IMessageFormatter instance</returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq.GetMessageContent(System.Messaging.Message)">
+            <summary>
+            Deserializes the message content
+            </summary>
+            <param name="message">The message containing the content</param>
+            <returns>The deserialized content</returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq.GetWork(MaryKay.ServiceHost.Workers.AddTask)">
+            <summary>
+            Queries the message queue host for messages and 
+            uses the specified AddTask delegate to pass
+            the message data to a worker thread
+            </summary>
+            <param name="addTask">Delegate used to pass work
+            to the worder thread pool</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq.InitFormatter(System.Messaging.XmlMessageFormatter,System.Xml.XmlElement)">
+            <summary>
+            Initializes the specified XmlMessageFormatter
+            </summary>
+            <param name="formatter">The formatter to be initialized</param>
+            <param name="formatterElem">The XML element containing the information
+            used to initialize the message formatter</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq.InitFormatter(MaryKay.ServiceHost.Workers.XmlMessageFormatter,System.Xml.XmlElement)">
+            <summary>
+            Initializes the specified XmlMessageFormatter
+            </summary>
+            <param name="formatter">The formatter to be initialized</param>
+            <param name="formatterElem">The XML element containing the information
+            used to initialize the message formatter</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq.InitFormatter(System.Messaging.BinaryMessageFormatter,System.Xml.XmlElement)">
+            <summary>
+            Initializes the specified BinaryMessageFormatter
+            </summary>
+            <param name="formatter">The formatter to be initialized</param>
+            <param name="formatterElem">The XML element containing the information
+            used to initialize the message formatter</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq.Initialize(System.Xml.XmlNode)">
+            <summary>
+            Initializes the instance with the specified property values
+            </summary>
+            <param name="propertiesNode">Contains the property
+            values to use to initialize the instance</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq.RunTest">
+            <summary>
+            Tries to peek a message on the message queue
+            </summary>
+            <returns>An enum value indicating the success or failure of the test</returns>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq.TestStatus">
+            <summary>
+            Indicates the last result of the message read test
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq.TestStatus.NotRun">
+            <summary>
+            Indicates that the test has not been run and should
+            be run before attempting to get a work item
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq.TestStatus.Passed">
+            <summary>
+            Indicates that the test has been run and succeeded
+            and that the component can how attempt to get a work 
+            item
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq.TestStatus.Failed">
+            <summary>
+            Indicates that the test has been run and failed and
+            that the component should not attempt to get a work item
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.GetWorkStrategyMsmq.TestStatus.Indeterminate">
+            <summary>
+            Indicates that the test was run but that a result
+            could not be determined and that the test should
+            be run again.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.StartStrategySql">
+            <summary>
+            The StartStrategySql check for work strategy is a strategy that will
+            run the service based on the availability of rows from the specified
+            stored procedure.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategySql.Initialize(System.Xml.XmlNode)">
+            <summary>
+            Initialize is used to store required properties and initialize the 
+            check for work strategy.
+            </summary>
+            <param name="StartStrategyProperties">Provides access to the properties
+            for the check for work strategy that were in the Xml service configuration
+            file.</param>
+            <remarks>
+            The StartStrategySql strategy has required properties of Interval,
+            ConnectString, and StoredProcedure.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategySql.WaitUntilStart">
+            <summary>
+            The WaitUntilStart method will wait until there is available work from the data source
+            specified.  If no work is available it will sleep for the interval specified before 
+            it rechecks for work again.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategySql.ShouldStart">
+            <summary>
+            The ShouldStart method is used to determine if the WaitUntilStart method will
+            return immediately.  It should not be used instead of WaitUntilStart.
+            </summary>
+            <returns>Returns true if WaitUntilStart will immediately return false otherwise.</returns>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.RequiredPropertyAttribute">
+            <summary>
+            The RequiredPropertiesAttribute is used to specify what properties are
+            required by a service.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.RequiredPropertyAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the RequiredPropertiesAttibute class.
+            </summary>
+            <param name="Name">The name of the required property.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.RequiredPropertyAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the RequiredPropertiesAttibute class.
+            </summary>
+            <param name="Name">The name of the required property.</param>
+            <param name="Default">The default value of the required property.</param>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.RequiredPropertyAttribute.Name">
+            <summary>
+            The name of the required property.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.RequiredPropertyAttribute.Default">
+            <summary>
+            The default value of the required property.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.StartStrategyMonthly">
+            <summary>
+            The StartStrategyMonthly start strategy will start the service at
+            the specified time each week.
+            </summary>
+            <remarks>
+            If the Interval property is set to every 10 minutes and the worker takes
+            2 minutes to run then this check for work strategy will wait for 8 minutes
+            and then run the service again.  If the service takes longer than the specified
+            interval this check for work strategy will immediatley restart the service.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyMonthly.Initialize(System.Xml.XmlNode)">
+            <summary>
+            The Initialize method will verify that an Interval property has been
+            specified and save it internally.
+            </summary>
+            <param name="configElem">Provides access to the properties
+            for the check for work strategy that were in the Xml service configuration
+            file.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyMonthly.WaitUntilStart">
+            <summary>
+            The WaitUntilStart method will return once the specified Time has passed.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyMonthly.ShouldStart">
+            <summary>
+            The ShouldStart method is used to determine if the WaitUntilStart method will
+            return immediately.  It should not be used instead of WaitUntilStart.
+            </summary>
+            <returns>Returns true if WaitUntilStart will immediately return false otherwise.</returns>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.StartStrategyAlways">
+            <summary>
+            The CheckForWorkStrategyAlways check for work strategy is a strategy that
+            instructs the framework to always run the process.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyAlways.Initialize(System.Xml.XmlNode)">
+            <summary>
+            Initialize is used to store required properties and initialize the 
+            check for work strategy.
+            </summary>
+            <param name="StartStrategyProperties">Provides access to the properties
+            for the start strategy that were in the Xml service configuration
+            file.</param>
+            <remarks>
+            The StartStrategyAlways strategy does not have any required
+            properties and does not require initialization.  Thus this method does
+            not do anything for this strategy.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyAlways.WaitUntilStart">
+            <summary>
+            The WaitUntilStart method will always return immediately when called.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyAlways.ShouldStart">
+            <summary>
+            The CheckForWork method is used to determine if the WaitForWork method will
+            return immediately.  It should not be used instead of WaitForWork.
+            </summary>
+            <returns>Returns true if WaitForWork will immediately return false otherwise.</returns>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.ServiceBuilder">
+            <summary>
+            The ServiceBuilder class supports the creation of MaryKay.ServiceHost
+            services.  The static CreateService method is used to create new services.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceBuilder.CreateService(System.Xml.XmlNode,System.Xml.XmlNamespaceManager,System.String,System.String)">
+            <summary>
+            Creates and initializes a new service instance.
+            </summary>
+            <param name="xmlServiceDefinition">The process definition for the new service.</param>
+            <param name="configNamespace">The namespace used to access the Xml elements in xmlServiceDefinition.</param>
+            <param name="groupName">The group name that the service is defined in.</param>
+            <param name="eventLogName">The name of the event log to use.</param>
+            <returns>Returns a new service instance.</returns>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.GetWorkStrategyObject">
+            <summary>
+            Uses an object to get work for a service
+            </summary>
+            <remarks>
+            To use this class, create a configuration file with the following
+            GetWorkStrategy properties:
+            <list type="bullet">
+            <item>
+            <term>TypeName</term>
+            <description>The fully qualified type name of the class containing 
+            the method to use to generate work items</description>
+            </item>
+            <item>
+            <term>MethodName</term>
+            <description>The name of the method of the specified type
+            to use to generate work items</description>
+            </item>
+            </list>
+            The method specified must have no parameters and must return a 
+            type that implements System.Collections.IEnumerable.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.GetWorkStrategyObject.GetWork(MaryKay.ServiceHost.Workers.AddTask)">
+            <summary>
+            Adds tasks to the worker pool using the specified method delegate
+            </summary>
+            <param name="addTask">The method delegate
+            used to add tasks to the worker pool</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.GetWorkStrategyObject.Initialize(System.Xml.XmlNode)">
+            <summary>
+            Initializes the instance with information from the configuration file
+            </summary>
+            <param name="config">Contains the configuration information</param>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.GetWorkDelegate">
+            <summary>
+            Defines the signature that must be implemented by methods
+            to be used by the GetWorkStrategyObject class
+            </summary>
+            <returns>An IEnumerable instance used to iterate over
+            the work items</returns>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.StartStrategyUnc">
+            <summary>
+            The StartStrategyUnc strategy run the service if one or more files
+            matching the specified type in the specified folder.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyUnc.Initialize(System.Xml.XmlNode)">
+            <summary>
+            Initialize is used to store required properties and initialize the 
+            check for work strategy.
+            </summary>
+            <param name="StartStrategyProperties">Provides access to the properties
+            for the check for work strategy that were in the Xml service configuration
+            file.</param>
+            <remarks>
+            The StartStrategyUnc strategy has required properties of Interval,
+            and FilePath.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyUnc.WaitUntilStart">
+            <summary>
+            The WaitUntilStart method will continue to look for the specified file(s) and
+            once a file match is found the method will return.  If no work is available
+            it will sleep for the interval specified before it rechecks for work again.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyUnc.ShouldStart">
+            <summary>
+            The ShouldStart method is used to determine if the WaitUntilStart method will
+            return immediately.  It should not be used instead of WaitUntilStart.
+            </summary>
+            <returns>Returns true if WaitUntilStart will immediately return false otherwise.</returns>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.ServiceList">
+            <summary>
+            The ServiceList class is used to serialize and deserialize a configuration
+            file for MaryKay.ServiceHost services.
+            </summary>
+            <remarks>
+            When the ServiceList class is serialized it will use the namespace of
+            urn:marykayservice-schema.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceList.SetDirty">
+            <summary>
+            The SetDirty method is used by contained properties to indicate they
+            have been changed.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.ServiceList.ToString">
+            <summary>
+            The ToString method serializes the ServiceList as Xml and returns it as a
+            string.
+            </summary>
+            <returns>The serialized Xml of the ServiceList.</returns>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.ServiceList.EventLogName">
+            <summary>
+            The EventLogName property is serialized as an attribute of the
+            ServiceList node.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.ServiceList.IsDirty">
+            <summary>
+            The IsDirty property is used to determine if the ServiceList or
+            any of it's contained properties have been changed.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.ServiceList.GroupName">
+            <summary>
+            The GroupName property is serialized as an attribute of the 
+            ServiceList node.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.ServiceList.Services">
+            <summary>
+            The Services array holds the individual services defined by this
+            ServiceList.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.Service">
+            <summary>
+            The Service class is used to serialize and deserialize the ServiceDefinition
+            element of a configuration file for MaryKay.ServiceHost services.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Service.OnDeserialization(System.Object)">
+            <summary>
+            Performs clean up after deserialization.
+            </summary>
+            <param name="sender"></param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Service.SetDirty">
+            <summary>
+            The SetDirty method is used by contained properties to indicate they
+            have been changed.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.Service.ToString">
+            <summary>
+            The ToString method serializes the Service as Xml and returns it as a
+            string.
+            </summary>
+            <returns>The serialized Xml of the Service.</returns>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.Service.IsDirty">
+            <summary>
+            The IsDirty property is used to determine if the Service or
+            any of it's contained properties have been changed.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.Service.Description">
+            <summary>
+            Gets or sets the description of the service.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.Service.ServiceType">
+            <summary>
+            Gets or sets the ServiceType property.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.Service.StartStrategyType">
+            <summary>
+            Gets or sets the CheckForWorkStrategyType property.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.Service.GetWorkStrategyType">
+            <summary>
+            Gets or sets the GetWorkStrategyType property.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.Service.WorkerType">
+            <summary>
+            Gets or sets the WorkerType property.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.Service.NumberOfWorkers">
+            <summary>
+            Gets or sets the number of workers for the service.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.Service.Name">
+            <summary>
+            Gets or sets the name of the service.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.TypeAndProperties">
+            <summary>
+            The TypeAndProperties class is used to serialize and deserialize the Type
+            and Properties elements of a configuration file for MaryKay.ServiceHost services.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TypeAndProperties.#ctor">
+            <summary>
+            Initialize a new instance of the TypeAndProperties class.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TypeAndProperties.SetDirty">
+            <summary>
+            The SetDirty method is used by contained properties to indicate they
+            have been changed.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TypeAndProperties.AddProperty(System.String,System.String)">
+            <summary>
+            The AddProperty method is used to add a property to the internal properties
+            ArrayList.
+            </summary>
+            <param name="Key">The key for the property to add.</param>
+            <param name="Value">The value for the property to add.</param>
+            <returns>The Property in the ArrayList that matches the specified key.  This will
+             either be a new Property or an existing one if the key was already in the
+             ArrayList</returns>
+            <remarks>
+            If there is already a property with the same key in the ArrayList it will be
+            returned without changing it's value.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TypeAndProperties.AddGetWork">
+            <summary>
+            Adds a TypeAndProperties object to the ArrayList for the GetWork property.
+            </summary>
+            <returns>The new GetWork TypeAndProperty.</returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TypeAndProperties.AddGetWork(MaryKay.ServiceHost.Workers.TypeAndProperties)">
+            <summary>
+            Adds the specified GetWork TypeAndProperty to the ArrayList.
+            </summary>
+            <param name="GetWork">The GetWork TypeAndProperty to add to the ArrayList.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TypeAndProperties.GetGetWork">
+            <summary>
+            Returns the GetWork TypeAndProperty if one already exists.  If one does not already
+            exist in the ArrayList null will be returned.
+            </summary>
+            <returns>If the GetWork TypeAndProperty exists it will be returned otherwise null
+            will be returned.</returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TypeAndProperties.GetWorkerType">
+            <summary>
+            Returns the WorkerType property.
+            </summary>
+            <returns>The WorkerType property.</returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TypeAndProperties.RemoveAllProperties">
+            <summary>
+            Removes all of the properties of the service
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TypeAndProperties.RemoveProperty(System.String)">
+            <summary>
+            Removes the specified Property from the internal ArrayList.
+            </summary>
+            <param name="Key">The key value of the Property to remove.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TypeAndProperties.RemoveGetWork">
+            <summary>
+            Removes the GetWork TypeAndProperty from the internal ArrayList.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TypeAndProperties.ToString">
+            <summary>
+            The ToString method serializes the Service as Xml and returns it as a
+            string.
+            </summary>
+            <returns>The serialized Xml of the Service.</returns>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.TypeAndProperties.IsDirty">
+            <summary>
+            The IsDirty property is used to determine if the Service or
+            any of it's contained properties have been changed.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.TypeAndProperties.Properties">
+            <summary>
+            The Properties property is used to access the individual Property objects.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.TypeAndProperties.Type">
+            <summary>
+            The Type property is used to get and set the fully qualified assembly name.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.TypeAndProperties.Property">
+            <summary>
+            The Property class is used to serialize and deserialize a single
+            property element of a TypeAndProperty node in a configuration file
+            for MaryKay.ServiceHost services.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TypeAndProperties.Property.#ctor(MaryKay.ServiceHost.Workers.TypeAndProperties,System.String,System.String)">
+            <summary>
+            Initialize a new instance of the Property class.
+            </summary>
+            <param name="Container">A reference to the TypeAndProperty collection this property is in.</param>
+            <param name="Key">The key value for the Property.</param>
+            <param name="Value">The data value for the Property.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TypeAndProperties.Property.SetDirty">
+            <summary>
+            Used to set the IsDirty property of the TypeAndProperty collection that
+            this Property is in.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.TypeAndProperties.Property.Attributes">
+            <summary>
+            The attributes of the Property
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.TypeAndProperties.Property.Key">
+            <summary>
+            The key value of the Property.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.TypeAndProperties.Property.Value">
+            <summary>
+            The data value of the Property.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.XmlMessageFormatter">
+            <summary>
+            An IMessageFormatter implementation that 
+            uses XML to read and write message bodies
+            </summary>
+            <remarks>This class is designed to behave exactly the
+            same way as System.Messaging.XmlMessageFormatter, adding
+            the ability to specify the underlying encoding
+            of the message</remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.XmlMessageFormatter.#ctor">
+            <summary>
+            Creates a new instance of XmlMessageFormatter
+            </summary>
+            <remarks>This constructor is generally used when writing
+            to a queue as target types are not required when writing.</remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.XmlMessageFormatter.#ctor(System.Text.Encoding)">
+            <summary>
+            Creates a new instance of XmlMessageFormatter
+            </summary>
+            <param name="encoding">The encoding to use when
+            writing to or reading from the message body stream.</param>
+            <remarks>This constructor is generally used when writing
+            to a queue as target types are not required when writing.</remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.XmlMessageFormatter.#ctor(System.Text.Encoding,System.Type[])">
+            <summary>
+            Creates a new instance of XmlMessageFormatter
+            </summary>
+            <param name="encoding">The encoding to use when
+            writing to or reading from the message body stream.</param>
+            <param name="types">The Types the formatter should
+            read</param>
+            <remarks>This constructor is generally used when writing
+            to a queue as target types are not required when writing.</remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.XmlMessageFormatter.#ctor(System.Text.Encoding,System.String[])">
+            <summary>
+            Creates a new instance of XmlMessageFormatter
+            </summary>
+            <param name="encoding">The encoding to use when
+            writing to or reading from the message body stream.</param>
+            <param name="typeNames">The names of the Types the formatter should
+            read</param>
+            <remarks>This constructor is generally used when writing
+            to a queue as target types are not required when writing.</remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.XmlMessageFormatter.CanRead(System.Messaging.Message)">
+            <summary>
+            Returns a boolean value indicating whether or not the
+            specified message can be read using the instance
+            </summary>
+            <param name="message">The message to be read</param>
+            <returns>True if the instance can deserialize the message, 
+            false if not</returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.XmlMessageFormatter.Clone">
+            <summary>
+            Returns a new instance of XmlMessageFormatter that is
+            identical to the instance
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.XmlMessageFormatter.GetTypes(System.String[])">
+            <summary>
+            Creates an array of Type instances
+            based on the specified type names
+            </summary>
+            <param name="typeNames">The type names from which
+            the array of Types is to be created</param>
+            <returns>The array of Type instances</returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.XmlMessageFormatter.Read(System.Messaging.Message)">
+            <summary>
+            Returns the object defined by the contents of the message body
+            </summary>
+            <param name="message">The message containing the 
+            object information</param>
+            <returns>The object instance defined by the message body</returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.XmlMessageFormatter.SetEncoding(System.String)">
+            <summary>
+            Sets the Encoding property based on the encoding specified
+            encoding type
+            </summary>
+            <param name="encoding">The name of the encoding type
+            to be used</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.XmlMessageFormatter.Write(System.Messaging.Message,System.Object)">
+            <summary>
+            Writes the specified object to the body of the message
+            </summary>
+            <param name="message">The message to which the 
+            object information is to be written</param>
+            <param name="obj">The object containing the information
+            to be written</param>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.XmlMessageFormatter.Encoding">
+            <summary>
+            Gets or sets the encoding used to read from and write
+            to the message body stream
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.XmlMessageFormatter.TargetTypeNames">
+            <summary>
+            Gets the names of the types that can be 
+            deserialized by this instance
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.XmlMessageFormatter.TargetTypes">
+            <summary>
+            Gets the types that can be 
+            deserialized by this instance
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.SafeCounter">
+            <summary>
+            The SafeCounter class provices a wrapper for the performance counters.  This is
+            required because the .Net framework performance counters throw exceptions whenever
+            a counter is used and it has not previously been installed correctly.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.SafeCounter._counter">
+            <summary>
+            The reference to the internal PerformanceCounter.
+            </summary>
+        </member>
+        <member name="F:MaryKay.ServiceHost.Workers.SafeCounter._isValid">
+            <summary>
+            The internal is valid property.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.SafeCounter.#ctor(System.String,System.String,System.String,System.Int64)">
+            <summary>
+            Use this constructor for basic counters including types
+            NumberofItems32.  Any singleton counter will work.
+            </summary>
+            <param name="CounterCategory">The category name of the counter.</param>
+            <param name="CounterName">The name of the counter.</param>
+            <param name="InstanceName">The instance name of the counter.</param>
+            <param name="InitialValue">The initial value of the counter.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.SafeCounter.#ctor">
+            <summary>
+            This constructor should only be used to create an invalid counter.
+            You must use the SafeCounter(string Category, string Name, string InstanceName, long InitialValue)
+            constructor to create a real SafeCounter.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.SafeCounter.Init">
+            <summary>
+            Used to initialize the SafeCounter.  It can be called multiple times but
+            susequent calls will be ignored.  If it is not called the first access to
+            the SafeCounter will call it internally.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.SafeCounter.VerifyCounter(System.Diagnostics.PerformanceCounter)">
+            <summary>
+            The VerifyCounter method check to see if the specified PerformanceCounter
+            is valid.
+            </summary>
+            <param name="pc">The PerformanceCounter to verify</param>
+            <returns>The type of the counter if it is valid or an exception will be
+            raised if it is not.</returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.SafeCounter.Decrement">
+            <summary>
+            Used to decrement the counter.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.SafeCounter.Increment">
+            <summary>
+            Used to increment the counter.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.SafeCounter.IncrementBy(System.Int64)">
+            <summary>
+            Used to increment the counter by the specified value.
+            </summary>
+            <param name="value">The amount to increment the counter value.</param>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.SafeCounter.IsValid">
+            <summary>
+            The IsValid property value specifies whether or not the SafeCounter is
+            valid.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.SafeCounter.CounterName">
+            <summary>
+            The name of the counter.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.SafeCounter.CategoryName">
+            <summary>
+            The category name of the counter.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.SafeCounter.InstanceName">
+            <summary>
+            The instance name of the counter.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.SafeCounter.CounterHelp">
+            <summary>
+            The help description of the counter.
+            </summary>
+        </member>
+        <member name="P:MaryKay.ServiceHost.Workers.SafeCounter.RawValue">
+            <summary>
+            The raw value of the counter.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.GetWorkStrategySql">
+            <summary>
+            The GetWorkStrategySql get work strategy will retrieve DataRows from the 
+            table return by the specified stored procedure.  It will then use the 
+            AddTask method to add the task to the work queue.  The ID value will be the
+            ToString value of the first column and the Task value will be the DataRow
+            for that row.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.GetWorkStrategySql.Initialize(System.Xml.XmlNode)">
+            <summary>
+            Initialize is used to store required properties and initialize the 
+            get work strategy.
+            </summary>
+            <param name="getWorkProperties">Provides access to the properties
+            for the get work strategy that were in the Xml service configuration
+            file.</param>
+            <remarks>
+            The GetWorkStrategySql strategy has required properties of TimeoutInterval,
+            ConnectString, and StoredProcedure.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.GetWorkStrategySql.GetWork(MaryKay.ServiceHost.Workers.AddTask)">
+            <summary>
+            The Get work method will open a connection to the specified data source
+            and execute the specified stored procedure.  Then each DataRow that is
+            returned is added to the work queue using the AddTask delegate.  The ToString
+            value of the first column of the DataRow must be a unique identifier for the
+            unit of work.
+            </summary>
+            <param name="addTask">The addTask delegate is used to add tasks to the work queue.</param>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.TaskMaster">
+            <summary>
+            The TaskMaster class defines the default master for a MaryKay.ServiceHost service.
+            It provides support for the customization of the way work is  gathered and divided into individual task for workers.
+            It does this by an internal IGetWorkStrategy reference that is called whenever additional work is needed.
+            The get work strategy can be specified in the configuration file for the service.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskMaster.#ctor(MaryKay.ServiceHost.Workers.ServiceDefinition)">
+            <summary>
+            Initialize a new instance of the TaskMaster class.
+            </summary>
+            <param name="serviceDefinition">The service definition to use to initialize the service.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskMaster.AddTask(System.Object,System.Object)">
+            <summary>
+            This method will create a worker and add it to the work queue.
+            </summary>
+            <param name="id">The ID of the task to be added to the queue.</param>
+            <param name="task">The Task to be added to the queue.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskMaster.GetWork">
+            <summary>
+            This method should add tasks to the queue using the <see cref="M:MaryKay.ServiceHost.Workers.TaskMaster.AddTask(System.Object,System.Object)"/>AddTask method.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskMaster.Initialize">
+            <summary>
+            The Initialize method is used to initialize the task master.
+            </summary>
+            <remarks> Some actions that should be done in this method include:
+            <list type="bullet">
+            <item>adding performance counters using the AddPerfCounter method</item>
+            <item>reading and saving any required properties</item>
+            <item>initializing the process</item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskMaster.PerformWork">
+            <summary>
+            Used to start a get work controller thread to service requests
+            from the work queue.
+            </summary>
+            <remarks>If this process is event driven and does not need to 
+            respond to work queue requests for additional work this method
+            should be overridden and fill the work queue based on the events.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskMaster.CreateWorker(System.Object,System.Object,MaryKay.ServiceHost.Workers.TaskMaster)">
+            <summary>
+            The CreateWorker method is called to create a new instance of a worker
+            and initialize it using the information passed as parameters.
+            </summary>
+            <param name="id">The ID for the task to be performed by the new worker.</param>
+            <param name="task">The Task to be performed by the new worker.</param>
+            <param name="master">The Master of the worker which is used for callback methods by the worker</param>
+            <returns>Returns the new worker.</returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskMaster.OnContinue">
+            <summary>
+            Used to notify the process to continue.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskMaster.OnPause">
+            <summary>
+            Used to notify the process to pause.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskMaster.OnStart">
+            <summary>
+            Used to notify the process to start.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskMaster.OnStop">
+            <summary>
+            Sets the maximum thread count in the 
+            thread pool to zero, then waits until all of the
+            threads have been stopped
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskMaster.TaskComplete">
+            <summary>
+            Used by a worker to indicate a task has been sucessfully completed.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.TaskMaster.TaskFail">
+            <summary>
+            Used by a worker to indicate a task has failed.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.AddTask">
+            <summary>
+            The AddTask delegate is used by the IGetWorkStrategy components
+            to add a work task to the work queue.
+            </summary>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.StartStrategyInterval">
+            <summary>
+            The StartStrategyInterval check for work strategy is a strategy that
+            instructs the framework to run based on the specified interval.
+            </summary>
+            <remarks>
+            If the Interval property is set to every 10 minutes and the worker takes
+            2 minutes to run then this check for work strategy will wait for 8 minutes
+            and then run the service again.  If the service takes longer than the specified
+            interval this check for work strategy will immediatley restart the service.
+            </remarks>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyInterval.Initialize(System.Xml.XmlNode)">
+            <summary>
+            The Initialize method will verify that an Interval property has been
+            specified and save it internally.
+            </summary>
+            <param name="StartStrategyProperties">Provides access to the properties
+            for the check for work strategy that were in the Xml service configuration
+            file.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyInterval.WaitUntilStart">
+            <summary>
+            The WaitUntilStart method will return once the specified Interval has elapsed.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyInterval.ShouldStart">
+            <summary>
+            The ShouldStart method is used to determine if the WaitUntilStart method will
+            return immediately.  It should not be used instead of WaitUntilStart.
+            </summary>
+            <returns>Returns true if WaitUntilStart will immediately return false otherwise.</returns>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.StartStrategyDaily">
+            <summary>
+            The StartStrategyDaily start strategy will start the service at
+            the specified time each day.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyDaily.IsOnOrAfterStartTime">
+            <summary>
+            Returns a boolean value indicating whether or not
+            the current time is at least as late as the specified start time
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyDaily.RanToday">
+            <summary>
+            Returns a boolean value indicating whether or not the service has been executed today
+            </summary>
+            <returns>True if the service has been executed today, false if not</returns>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyDaily.Initialize(System.Xml.XmlNode)">
+            <summary>
+            The Initialize method will verify that an Interval property has been
+            specified and save it internally.
+            </summary>
+            <param name="StartStrategyProperties">Provides access to the properties
+            for the check for work strategy that were in the Xml service configuration
+            file.</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyDaily.WaitUntilStart">
+            <summary>
+            The WaitUntilStart method will return once the specified Time has passed.
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.StartStrategyDaily.ShouldStart">
+            <summary>
+            The ShouldStart method is used to determine if the WaitUntilStart method will
+            return immediately.  It should not be used instead of WaitUntilStart.
+            </summary>
+            <returns>Returns true if WaitUntilStart will immediately return false otherwise.</returns>
+        </member>
+        <member name="T:MaryKay.ServiceHost.Workers.MissingConfigValueException">
+            <summary>
+            Contains information about a required configuration property that was not specified
+            </summary>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.MissingConfigValueException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+            Creates a new instance of MissingConfigValueException
+            </summary>
+            <param name="propertyName">The name of the property for which an error has been detected</param>
+            <param name="message">A description of the exception</param>
+            <param name="innerException">The cause of the exception</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.MissingConfigValueException.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new instance of MissingConfigValueException
+            </summary>
+            <param name="propertyName">The name of the property for which an error has been detected</param>
+            <param name="message">A description of the exception</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.MissingConfigValueException.#ctor(System.String)">
+            <summary>
+            Creates a new instance of MissingConfigValueException
+            </summary>
+            <param name="propertyName">The name of the property for which an error has been detected</param>
+        </member>
+        <member name="M:MaryKay.ServiceHost.Workers.MissingConfigValueException.GetDefaultMessage(System.String)">
+            <summary>
+            Returns the default message for the instance
+            </summary>
+            <param name="propertyName">The name of the missing property</param>
+            <returns>The default message</returns>
+        </member>
+    </members>
+</doc>

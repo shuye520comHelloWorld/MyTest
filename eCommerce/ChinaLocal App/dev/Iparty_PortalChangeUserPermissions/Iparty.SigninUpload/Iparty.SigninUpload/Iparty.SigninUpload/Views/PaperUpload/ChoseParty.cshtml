@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "选择活动场次";
+}
+
+@model List<Iparty.SigninUpload.Models.DirInfo>
+
+@section navs{
+爱PARTY 来宾名单 - 第一步 填写主办人信息 > 第二步 选择活动场次
+    }
+
+<div style="padding: 20px; background-color: rgb(229, 229, 229);">
+    活动主办人姓名：  @Model[0].Name      <span style="margin-left: 30px;">编号</span>：@Model[0].DirectSellerID     <a href="@Url.Action("index")" style="margin-left: 30px;">修改主办人</a>
+</div>
+
+<div style="margin: 20px 0;">选择一场活动：</div>
+
+@for (int i = 0; i < Model.Count; i++)
+{
+    <div style="padding:5px;" >
+        <input type="radio" name="partyname" id="radio_@i" class="radioBtn" value="@Model[i].PartyKey"  style="vertical-align:middle;" />&nbsp;&nbsp;<label class="LabelBtn"   style="vertical-align:middle;" for="radio_@i">@(Model[i].EventStartDate.Year)年@(Model[i].EventStartDate.Month)月&nbsp;&nbsp; @(Model[i].Title)</label>
+    </div>
+}
+
+<div style="margin-top: 100px;">
+    <input type="hidden" id="hid_partykey" />
+    <button type="button" style="width: 150px; height: 30px;" id="btnNext" >下一步</button>
+    <a href="@Url.Action("index")" style=" margin-left:30px;">返回上一步</a>
+
+</div>
+
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $(".radioBtn").click(function () {
+                var partykey = $(this).attr("value");
+                $("#hid_partykey").val(partykey);
+            })
+
+            $("#btnNext").click(function () {
+                if ($("#hid_partykey").val().length != 36) {
+                    alertWin.errAlert("请选择一场活动！");
+                } else {
+                    location.href = applicationPath + "/PaperUpload/uploadView?PartyKey=" + $("#hid_partykey").val();
+                }
+            })
+        })
+        
+
+    </script>
+    }

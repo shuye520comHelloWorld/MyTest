@@ -1,0 +1,201 @@
+﻿@{
+    ViewBag.Title = "来宾邀请券";
+    var Token = Request.QueryString["Token"] ?? "";
+    Token = HttpUtility.UrlDecode(Token);
+    var referenceKey = Request.QueryString["ReferenceKey"] ?? "";
+    var unionId = Request.QueryString["UnionId"] ?? "";
+    var openId = Request.QueryString["openId"] ?? "";
+    var appId = IParty.RegisterCustomer.Mobile.Common.GlobalSettings.AppID;
+    var shareLink = IParty.RegisterCustomer.Mobile.Common.GlobalSettings.ShareHost + "?Token=" + Token+"&ShareTimes=2";
+    var shareTitle = IParty.RegisterCustomer.Mobile.Common.GlobalSettings.ShareTitle;
+    var shareDesc = IParty.RegisterCustomer.Mobile.Common.GlobalSettings.ShareDesc;
+    var shareImg = IParty.RegisterCustomer.Mobile.Common.GlobalSettings.ShareImg;
+    var apiHost = IParty.RegisterCustomer.Mobile.Common.GlobalSettings.apiHost;
+    var apiUrl = IParty.RegisterCustomer.Mobile.Common.GlobalSettings.apiUrl;
+}
+
+<script>
+    var pageData = {
+        Token: '@(Token)',
+        referenceKey: "@referenceKey",
+        openId: '@openId',
+        unionId: "@unionId",
+        debug: false,
+        appId: "@appId",
+        apiHost: "@apiHost",
+        apiUrl:"@apiUrl"
+
+    };
+    //alert(ko.toJSON(pageData));
+
+    var shareData = {
+        title: '@shareTitle',
+        desc: '@shareDesc',
+        link: '@shareLink',
+        imgUrl: '@shareImg'
+    };
+
+    //alert(ko.toJSON(shareData));
+</script>
+@*<div id="reGetCard" style="margin-top:20px;">
+        <img src="@shareImg" />
+        <a href="javascript:registerView.shareParty()" class="btn ">qqqqq</a>
+    </div>*@
+<div id="mobile">
+    <div id="CreateView" class="">
+        <div class="top">
+            <div class="top-img"><img src="~/content/images/web_05_top.png " /></div>
+            <div class="middle">
+                <div class="text">
+                    <p style="font-size:36px; margin-bottom:40px;" data-bind="text:EventTitle"></p>
+                    <p class="add"><img src="~/content/images/web_03.png" style="position:absolute;top:5px;left:0;"><span data-bind="text:WorkshopLocation"></span></p>
+                    <p><img src="~/content/images/web_07.png" align="absbottom">&nbsp;&nbsp;<span data-bind="text:meetingtime"></span></p>
+                    <p><img src="~/content/images/web_10.jpg" align="absbottom"> &nbsp;邀请人 <span data-bind="text:ForwordName"></span> </p>
+                </div>
+            </div>
+            <div class="foot-img"><img src="~/content/images/web_05_foot.png " /></div>
+        </div>
+        <div id="InfoView">
+            <div class="white"></div>
+            <div class="yqk">
+                请填写您的个人信息来生成邀请卡(w)
+            </div>
+
+            <div class="area">
+                <span>姓名</span>
+                <input type="text" placeholder="请填写" class="text" data-bind="value:name" required="required" maxlength="5">
+            </div>
+
+            <div class="area">
+                <span>手机号码</span>
+                <input type="tel" placeholder="请填写" class="text tel" data-bind="value:mobile" pattern="[1][34578]\d{9}" maxlength="11" required="required" title="例如:15800000911">
+            </div>
+
+
+            <div class="line">
+                <a href="javascript:void(0);" class="btn btnSubmit">生成邀请卡</a>
+                <input type="submit" id="hideSubmit" style="display:none" />
+            </div>
+        </div>
+        <div id="MyQRCodeView" class="hide">
+            <div class="ent" style="width:350px;">
+                <p>报名成功</p>
+                <p style="font-size:26px;">请截图保存,并在入口处出示此券</p>
+            </div>
+
+            <div class="erweima"><div id="qrcode"></div></div>
+
+            <p class="text2">此二维码为入场唯一凭证，<br>切勿任意转发或复制给其他顾客</p>
+
+            <div class="footer">温馨提示：记得截图保存该页面哦!</div>
+
+        </div>
+    </div>
+    <div id="SuccessView" class="hide">
+        <div class="keep-bottom-wrapper">
+            <div class="card-get-states">
+                <div>
+                    <img src="~/content/Images/check.png" alt="领取成功" />
+                </div>
+                <h4>领取成功！</h4>
+                <p>已添加至您的卡包</p>
+            </div>
+
+            <div class="con-wave-border">
+                <div class="con-wave-border-header">
+                    <h4>黄金紧颜棒  美丽“振”能量券</h4>
+                    <p class="data-position" data-bind="text:WorkshopLocation">
+                        魅力女人工作室上海市静安区南京西路1366 号恒隆广场2期19楼培训教室B
+                    </p>
+                    <p class="data-time" data-bind="text:meetingtime">
+                        2015年5月30日 11:45－15:00
+                    </p>
+                </div>
+                <div class="notice-info">
+                    <p class="text-center">我们的美容顾问会尽快和您取得联系,请保持手机畅通使用时请出示您的微信服务券二维码（微信>我>卡包） </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+
+    $(function () {
+        //注册微信jsdk
+        var url = location.href.split('#')[0];
+        $.getJSON("@Url.Action("GetWechatConfig", "wechat")", {url:url}, function (data) {
+            //alert(ko.toJSON(data));
+            wx.config({     //wxe965f2fbb007350e
+                debug: pageData.debug, appId: pageData.appId, timestamp: data.timestamp, nonceStr: data.noncestr,
+                signature: data.signature,jsApiList: ['addCard','onMenuShareTimeline','onMenuShareAppMessage']
+            });
+        });
+
+        wx.ready(function () {
+            // 1 判断当前版本是否支持指定 JS 接口，支持批量判断
+            wx.checkJsApi({
+                jsApiList: [
+                  'addCard',
+                  'onMenuShareTimeline',
+                  'onMenuShareAppMessage'
+                ],
+                success: function (res) {
+                    if(!res.checkResult.addCard){
+                        window.location.href="@(Url.Action("register", "customer", new {Token=Token, referenceKey = referenceKey }))";
+                    }
+                }
+            });
+        });
+
+    });
+
+    var addCard =function(code){
+        //common.showLoading();
+        common.getCardId({ InvitationToken: common.replaceToken() }, function (d) {
+            alert(ko.toJSON(d))
+            if (d.result) {
+                $.getJSON("@(Url.Action("addCardParms", "wechat"))", { cardCode: code.substr(0, 18), Token: pageData.Token, cardId: d.CardID }, function (data) {
+                    //alert(ko.toJSON(data.lst))
+                    wx.addCard({
+                        cardList:data.lst,
+                        success: function (res) {
+
+                            common.cardSuccess({ CardCode: code, CardID: data.cardId, PartyKey: viewModel.PartyKey() }, function (data) {
+
+                            })
+
+                            registerView.showViews(0, 1, 0,0);
+                            common.hideLoading();
+
+                        },
+                        cancel: function (res) {
+                            registerView.showViews(0, 0, 1,1);
+
+                            common.hideLoading();
+                            //alert("抱歉,您可能领取卡券失败,请【务必截图并保存当前页面的二维码】进行活动到场签到！");
+                        },
+                        fail: function (res) {
+                            registerView.showViews(0, 0, 1,1);
+
+                            common.hideLoading();
+                           // alert("抱歉,您可能领取卡券失败,请【务必截图并保存当前页面的二维码】进行活动到场签到！");
+                        }
+                    });
+                });
+            } else {
+
+                alert(d.ResponseStatus.Message);
+            }
+        });
+    }
+
+
+
+
+
+</script>
+<script src="~/Scripts/WXRegister.js?ss='@DateTime.Now.ToString("HHmmss")'"></script>

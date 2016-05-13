@@ -1,0 +1,467 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+html, body {
+    margin:0;
+    padding:0;
+    height: 100%;
+    background: #f0f0f0;
+}
+.ph-20{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.pb-70{
+    padding-bottom: 70px;
+}
+.pb-20{
+    padding-bottom: 20px;
+}
+.pb-80{
+    padding-bottom: 80px;
+}
+.m-t-10{
+    margin-top: 10px;
+}
+.m-b-10{
+    margin-bottom: 10px;
+}
+.btn-success-pink{
+    background: #fa5d5f;
+    border-color: #fa5d5f;
+    color: #fff;
+}
+.btn-success-yellow{
+    background: #F8B551;
+    border-color: #F8B551;
+    color: #fff;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+.btn-success-yellow:hover,.btn-success-yellow:active{
+    
+    background: #f39800;
+    border-color: #F39800;
+    color: #fff;
+
+}
+
+
+.btn-success-green{
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background:#5cb85c;
+    border-color:#5cb85c;
+    color: #fff;
+}
+.icon-clock,.icon-name,.icon-map{
+    display: inline-block;
+    -webkit-background-size: 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.icon-clock{
+    background-image: url("images/icon-clock.png");
+    width: 13px;
+    height: 13px;
+}
+.icon-name{
+    background-image: url("images/icon-name.png");
+    width: 11px;
+    height: 11px;
+}
+.icon-map{
+    background-image: url("images/icon-map.png");
+    width: 10px;
+    height: 13px;
+}
+/*生成卡券*/
+.keep-bottom-wrapper{
+    min-height:100%;
+    position:relative;
+    font-family: "Microsoft YaHei","STHeiti","SimHei","Helvetica",sans-serif;
+}
+.card-get-states{
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+.card-get-states img{
+    width: 34px;
+    height: 34px;
+}
+.con-wave-border{
+   
+}
+.con-wave-border .notice-sum{ 
+    background-image: url("images/wave-border-bg.png");
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    padding: 10px 10px 20px 10px;}
+.con-wave-border .notice-info{
+     background-image: url("images/wave-border-bg2.png");
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    padding: 10px;
+}
+.con-wave-border h4{
+    font-size: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.con-wave-border a{
+    font-size: 16px;
+}
+.con-wave-border .data-position{
+    font-size: 12px;
+    background: url("images/icon-map.png") no-repeat ;
+    background-position: 0 5px;
+    padding-left: 15px;
+    margin-left: 13px;
+    text-align: left;
+}
+.con-wave-border .data-time{
+    font-size: 12px;
+    background: url("images/icon-clock.png") no-repeat ;
+    padding-left: 15px;
+    margin-left: 13px;
+    text-align: left;
+}
+.con-wave-border .notice-info p{
+    font-size: 12px;
+    color: #999999;
+}
+.keep-bottom-footer {
+    background:#ffffff;
+    border-top: 1px solid #cccccc;
+    width:100%;
+    height:60px;
+    position:absolute;
+    bottom:0;
+    left:0;
+    padding-top: 12px;
+}
+
+/*我和顾客有个约会*/
+.dating-plan-index{
+    font-family: "Microsoft YaHei","STHeiti","SimHei","Helvetica",sans-serif;
+    background: url("images/dating-plan-bg.png") no-repeat;
+}
+.dating-plan-screen-1{
+    background: url("images/dating-plan-bg1.png") no-repeat;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    background-position: center center;
+}
+.dating-plan-screen-1>.col-md-12{position: relative}
+.dating-plan-index .btn-joyous{
+    background: #ff285e;
+    border-color: #ff285e;
+    font-size: 24px;
+    color: #fff;
+    border-bottom: 5px solid #a12b46;
+}
+.dating-plan-screen-1 .detail-link{
+    position: absolute;
+    right: 0px;
+    top: -70px;
+}
+.dating-plan-screen-1 .detail-link img{
+    width: 140px;
+}
+.dating-plan-index .border-dashed{
+    border:1px dashed #fff;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    color: #6e5818;
+    font-size: 14px;
+    background: #ffcf68;
+}
+.dating-plan-index .border-dashed>p{
+    margin: 0;
+}
+.dating-plan-index .next-icon-con{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.dating-plan-index .next-icon-con .next-icon{
+    width: 16px;
+    height: 16px;
+}
+.dating-plan-index .next-title-con1 img{
+    width: 236px;
+}
+.dating-plan-index .next-title-con2 img{
+    width: 197px;
+}
+.dating-plan-index .how-get-con{
+    margin-top: 20px;
+}
+.dating-plan-index .how-get-con img{
+    width: 100%;
+    max-width: 290px;
+    margin-bottom: 15px;
+}
+.dating-plan-index .title-l2{
+    font-size: 14px;
+    color: #fff;
+    background: #da8f22;
+    border-radius: 10px;
+    border:1px dashed #fff;
+    margin: 10px;
+    padding: 0 10px;
+    line-height: 1.8;
+}
+.dating-plan-index p{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.data-detail-modal .modal-dialog{
+    margin-top: 80px;
+}
+.data-detail-modal .modal-header,
+.data-detail-modal .modal-footer
+{
+    border-top: 0;
+    border-bottom: 0;
+}
+.data-detail-modal .modal-header .close span{
+    display: block;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    border: 1px solid #222;
+}
+.data-detail-modal .modal-footer{
+    text-align: center;
+}
+.data-detail-modal .modal-footer .btn-default-pink{
+    background: #ffffff;
+    color: #fa5e5e;
+    border: 1px solid #fa5e5e;
+    font-size: 18px;
+    border-radius: 26px;
+    padding: 10px 25px;
+}
+
+/*承诺页*/
+.commit-index{
+    font-family: "Microsoft YaHei","STHeiti","SimHei","Helvetica",sans-serif;
+}
+.commit-index .commit-header{
+    color: #888888;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.commit-index .commit-list{
+    border-top: 1px solid #ccc;
+    background: url("images/sawtooth.png") repeat-x #fff;
+    background-position: 0 100%;
+    padding: 10px;
+}
+
+.commit-index .commit-list ul{
+    padding-left: 20px;
+}
+.commit-index .checkbox label{
+    padding-left: 0;
+}
+/*游戏最后一页*/
+.data-add-success{
+    font-family: "Microsoft YaHei","STHeiti","SimHei","Helvetica",sans-serif;
+}
+.data-add-success .card-get-states{
+    background: #ffffff;
+}
+.data-add-success .data-notice{
+    padding-bottom: 10px;
+    position: relative;
+    background: #ffffff;
+    border-bottom: 1px solid #ccc;
+}
+.data-add-success .data-notice .data-notice-img{
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    bottom: 20px;
+}
+.data-add-success .data-notice>span{
+    display: block;
+    height: 100%;
+    position: absolute;
+    width: 40px;
+}
+.data-add-success .data-notice .data-notice-detail{
+    border-radius: 10px;
+    position: relative;
+    margin-left: 50px;
+    background: #e9e9e9;
+    padding: 15px 10px 10px;
+}
+.data-add-success .data-notice .data-notice-detail:before{
+    width: 21px;
+    height: 13px;
+    background: url("images/notice-bg-tail.png") no-repeat;
+    position: absolute;
+    left: -14px;
+    bottom: 0;
+    z-index: 99;
+    display: block;
+    content:" ";
+}
+/*美丽振能量券*/
+.receive-ticket{
+    font-family: "Microsoft YaHei","STHeiti","SimHei","Helvetica",sans-serif;
+    min-height:100%;
+    position:relative;
+    background: #ffffff;
+}
+.receive-ticket-header>.col-md-12{
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+}
+.receive-ticket-header>.col-md-12>img{
+    max-width: 100%;
+}
+.receive-ticket-header>.col-md-12>.rt-header-detail{
+    color: #999999;
+    position: absolute;
+    top: 100px;
+    left: 20px;
+}
+.receive-ticket .form-horizontal .form-group{
+    border-bottom: 1px solid #ccc;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+.receive-ticket .form-horizontal .control-label{
+    padding-top:7px;
+    margin-bottom: 0;
+}
+.receive-ticket .form-horizontal .form-control{
+    text-align: right;
+    border-color: white;
+    box-shadow: none;
+}
+
+/*生成邀请券*/
+.creating-card{
+    background: #ffffff;
+    min-height: 100%;
+    font-family: "Microsoft YaHei","STHeiti","SimHei","Helvetica",sans-serif;
+}
+.creating-card .creating-card-header{
+    background: #eb5d75;
+   
+}
+.creating-card .creating-card-header h4{
+    margin-bottom: 20px;
+}
+.creating-card .creating-card-header .creating-card-h-img{
+    padding-left:0;
+    padding-right:0;
+}
+.creating-card .creating-card-header .create-cart-img{
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.creating-card .creating-card-header .bg-bottom{
+    height: 7px;
+    background: url("images/web_05_foot.png") repeat-x;
+}
+.creating-card .form-horizontal .form-group {
+    border-bottom: 1px solid #ccc;
+    margin-top: 10px;
+    padding-bottom: 10px;
+}
+.creating-card .form-horizontal .control-label {
+    padding-top: 7px;
+    margin-bottom: 0;
+}
+.creating-card .form-horizontal .form-control {
+    text-align: right;
+    border-color: white;
+    box-shadow: none;
+     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.creating-card .creating-card-des{
+    color: #fff;
+}
+.creating-card .cc-des-pos{
+    padding-left: 20px;
+    background: url("images/web_03.png") no-repeat;
+    -webkit-background-size: 10px 12px;
+    background-size: 10px 12px;
+    background-position: 0 4px;
+}
+.creating-card .cc-des-time{
+    padding-left: 20px;
+    background: url("images/web_07.png") no-repeat;
+    -webkit-background-size: 12px 12px;
+    background-size: 12px 12px;
+    background-position: 0 4px;
+}
+.creating-card .cc-des-name{
+    padding-left: 20px;
+    background: url("images/web_10.jpg") no-repeat;
+    -webkit-background-size: 12px 12px;
+    background-size: 12px 12px;
+    background-position: 0 4px;
+}
+.creating-card .create-cart-body .cc-body-header{
+    background: url("images/web_13.png") no-repeat 10px center;
+    background-size: 26px 26px;
+    display: inline-block;
+    color: #333;
+    padding-left: 40px;
+    text-align: left;
+    margin-top: 20px;
+}
+.creating-card .create-cart-body img{
+    margin: 20px auto 10px;
+}
+.creating-card .bg-warning{
+    line-height: 40px;
+    height: 40px;
+    font-size: 16px;
+    text-align: center;
+    color: #F39800;
+    border-top: 1px solid #F7E1BC;
+}
+
+.loading{
+    z-index: 1050;
+    position: relative;
+    text-align: center;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    margin-top: -25px; 
+    margin-left: -25px;
+}
+.loading-backdrop{
+    background-color: #000;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 1040;
+    opacity: 0.2;
+    transition: opacity 0.15s linear 0s;
+}
+.loading-open {
+    overflow: hidden;
+    position: relative;
+}
+
+#mobile{
+    height:100%;
+}

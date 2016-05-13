@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7746CA20-5D95-4FF7-B940-3358BE5CD5B0}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PinkBus.Resource</RootNamespace>
+    <AssemblyName>PinkBus.Resource</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="PinkBusHTML.20151126\css\bootstrap.css.map" />
+    <None Include="PinkBusHTML.20151126\css\style.css.map" />
+    <None Include="PinkBusHTML.20151126\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="PinkBusHTML.20151126\fonts\glyphicons-halflings-regular.svg" />
+    <None Include="PinkBusHTML.20151126\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="PinkBusHTML.20151126\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="PinkBusHTML.20151126\fonts\glyphicons-halflings-regular.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PinkBusHTML.20151126\consultant.html" />
+    <Content Include="PinkBusHTML.20151126\consultantDown.html" />
+    <Content Include="PinkBusHTML.20151126\css\bootstrap.min.css" />
+    <Content Include="PinkBusHTML.20151126\css\jquery.datetimepicker.css" />
+    <Content Include="PinkBusHTML.20151126\css\style.css" />
+    <Content Include="PinkBusHTML.20151126\images\icon-circle-minus.png" />
+    <Content Include="PinkBusHTML.20151126\images\icon-circle-plus.png" />
+    <Content Include="PinkBusHTML.20151126\images\icon-close.png" />
+    <Content Include="PinkBusHTML.20151126\images\icon-danger-plus.png" />
+    <Content Include="PinkBusHTML.20151126\images\icon-date.png" />
+    <Content Include="PinkBusHTML.20151126\images\icon-mark.png" />
+    <Content Include="PinkBusHTML.20151126\images\icon-next-arrow.png" />
+    <Content Include="PinkBusHTML.20151126\images\icon-plus.png" />
+    <Content Include="PinkBusHTML.20151126\images\icon-prew-arrow.png" />
+    <Content Include="PinkBusHTML.20151126\index.html" />
+    <Content Include="PinkBusHTML.20151126\javascripts\bootstrap.min.js" />
+    <Content Include="PinkBusHTML.20151126\javascripts\jquery.datetimepicker.full.min.js" />
+    <Content Include="PinkBusHTML.20151126\javascripts\jquery.jeditable.js" />
+    <Content Include="PinkBusHTML.20151126\javascripts\jquery.min.js" />
+    <Content Include="PinkBusHTML.20151126\javascripts\moment.min.js" />
+    <Content Include="PinkBusHTML.20151126\ticket.html" />
+    <Content Include="PinkBusHTML.20151126\volunteer.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

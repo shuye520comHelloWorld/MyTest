@@ -1,0 +1,87 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.SendActivitySMS.WindowsService", "PinkBus.SendActivitySMS.WindowsService\PinkBus.SendActivitySMS.WindowsService.csproj", "{DE86E2A3-5CDD-4098-9DA5-3FBAB857591A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.SendActivitySMS.WindowsService.Test", "PinkBus.SendActivitySMS.WindowsService.Test\PinkBus.SendActivitySMS.WindowsService.Test.csproj", "{9397B101-05F6-4BD8-B59C-5DEDBA0A9850}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowsService Install template", "WindowsService Install template", "{83F4E766-5F00-4B45-9A9D-75001C9A2D69}"
+	ProjectSection(SolutionItems) = preProject
+		WindowsService Install template\InstallServiceHost1.bat = WindowsService Install template\InstallServiceHost1.bat
+		WindowsService Install template\itextsharp.dll = WindowsService Install template\itextsharp.dll
+		WindowsService Install template\MaryKay.ServiceHost.exe = WindowsService Install template\MaryKay.ServiceHost.exe
+		WindowsService Install template\MaryKay.ServiceHost.exe.config = WindowsService Install template\MaryKay.ServiceHost.exe.config
+		WindowsService Install template\MaryKay.ServiceHost.pdb = WindowsService Install template\MaryKay.ServiceHost.pdb
+		WindowsService Install template\MaryKay.ServiceHost.Workers.dll = WindowsService Install template\MaryKay.ServiceHost.Workers.dll
+		WindowsService Install template\MaryKay.ServiceHost.Workers.pdb = WindowsService Install template\MaryKay.ServiceHost.Workers.pdb
+		WindowsService Install template\MaryKay.ServiceHost.Workers.xml = WindowsService Install template\MaryKay.ServiceHost.Workers.xml
+		WindowsService Install template\MkCore.dll = WindowsService Install template\MkCore.dll
+		WindowsService Install template\NLog.config = WindowsService Install template\NLog.config
+		WindowsService Install template\NLog.dll = WindowsService Install template\NLog.dll
+		WindowsService Install template\NLog.xml = WindowsService Install template\NLog.xml
+		WindowsService Install template\NLog.xsd = WindowsService Install template\NLog.xsd
+		WindowsService Install template\Config\Service1.xml = WindowsService Install template\Config\Service1.xml
+		WindowsService Install template\ServiceStack.Common.dll = WindowsService Install template\ServiceStack.Common.dll
+		WindowsService Install template\ServiceStack.Common.xml = WindowsService Install template\ServiceStack.Common.xml
+		WindowsService Install template\ServiceStack.Interfaces.dll = WindowsService Install template\ServiceStack.Interfaces.dll
+		WindowsService Install template\ServiceStack.Interfaces.xml = WindowsService Install template\ServiceStack.Interfaces.xml
+		WindowsService Install template\ServiceStack.OrmLite.dll = WindowsService Install template\ServiceStack.OrmLite.dll
+		WindowsService Install template\ServiceStack.OrmLite.SqlServer.dll = WindowsService Install template\ServiceStack.OrmLite.SqlServer.dll
+		WindowsService Install template\ServiceStack.Text.dll = WindowsService Install template\ServiceStack.Text.dll
+		WindowsService Install template\ServiceStack.Text.xml = WindowsService Install template\ServiceStack.Text.xml
+		WindowsService Install template\UnInstallServiceHost1.bat = WindowsService Install template\UnInstallServiceHost1.bat
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C05BCFB5-57B5-433E-8AB1-F787F7542038}"
+	ProjectSection(SolutionItems) = preProject
+		WindowsService Install template\Config\dev.config = WindowsService Install template\Config\dev.config
+		WindowsService Install template\Config\MkAppSettings.config = WindowsService Install template\Config\MkAppSettings.config
+		WindowsService Install template\Config\prod.config = WindowsService Install template\Config\prod.config
+		WindowsService Install template\Config\qa.config = WindowsService Install template\Config\qa.config
+		WindowsService Install template\Service1.xml = WindowsService Install template\Service1.xml
+		WindowsService Install template\Config\uat.config = WindowsService Install template\Config\uat.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LocalDLL", "LocalDLL", "{9C2DC500-BB73-4874-9863-06ACDC8E75CA}"
+	ProjectSection(SolutionItems) = preProject
+		LocalDLL\MaryKay.ServiceHost.Workers.dll = LocalDLL\MaryKay.ServiceHost.Workers.dll
+		LocalDLL\MkCore.dll = LocalDLL\MkCore.dll
+		LocalDLL\NLog.dll = LocalDLL\NLog.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.mkcorp.com:8080/tfs/upgradedcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PinkBus.SendActivitySMS.WindowsService\\PinkBus.SendActivitySMS.WindowsService.csproj
+		SccProjectName1 = PinkBus.SendActivitySMS.WindowsService
+		SccLocalPath1 = PinkBus.SendActivitySMS.WindowsService
+		SccProjectUniqueName2 = PinkBus.SendActivitySMS.WindowsService.Test\\PinkBus.SendActivitySMS.WindowsService.Test.csproj
+		SccProjectName2 = PinkBus.SendActivitySMS.WindowsService.Test
+		SccLocalPath2 = PinkBus.SendActivitySMS.WindowsService.Test
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE86E2A3-5CDD-4098-9DA5-3FBAB857591A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE86E2A3-5CDD-4098-9DA5-3FBAB857591A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE86E2A3-5CDD-4098-9DA5-3FBAB857591A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE86E2A3-5CDD-4098-9DA5-3FBAB857591A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9397B101-05F6-4BD8-B59C-5DEDBA0A9850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9397B101-05F6-4BD8-B59C-5DEDBA0A9850}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9397B101-05F6-4BD8-B59C-5DEDBA0A9850}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9397B101-05F6-4BD8-B59C-5DEDBA0A9850}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C05BCFB5-57B5-433E-8AB1-F787F7542038} = {83F4E766-5F00-4B45-9A9D-75001C9A2D69}
+	EndGlobalSection
+EndGlobal

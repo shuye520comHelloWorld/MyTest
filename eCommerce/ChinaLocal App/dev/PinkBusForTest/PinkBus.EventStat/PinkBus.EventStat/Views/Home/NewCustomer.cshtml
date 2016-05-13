@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "新顾客名单";
+}
+<div class="filter-form">
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="activityName">新顾客姓名：</label>
+            <input type="text" class="form-control form-control-l-w" id="customerName" placeholder=" ">
+        </div>
+        <div class="form-group">
+            <label for="activityName">联系方式：</label>
+            <input type="text" class="form-control form-control-l-w" id="customerPhone" placeholder=" ">
+        </div>
+        <button type="button" class="btn btn-outline btn-d-m btn-warning searchBtn">查询</button>
+        @Html.ActionLink("导出Excel", "ExportStuNewCustomer", new { eventkey = Request.QueryString["EventKey"] }, new { Class = "btn btn-outline btn-d-lg btn-success" })
+       <!-- <button type="reset" class="btn btn-outline btn-d-lg btn-success">导出Excel</button>--> 
+    </form>
+</div>
+<div class="activity-table NewCustomerList" style="min-height:400px;">
+    
+</div>
+<div class="pagination-row">
+    <nav class="pull-right">
+
+    </nav>
+    <div class="page-indicator pull-left">
+        新顾客总数：<span id="CustomerCount">0</span>
+    </div>
+</div>
+<input type="hidden" id="EventKey" value="@Request.QueryString["EventKey"]" />
+
+
+<!-- Modal -->
+<div class="modal fade activity-modal__detail" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true" class="icon-close"></span></button>
+                <h4 class="modal-title" id="myModalLabel">新顾客详细信息</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-sm-6">姓名：<span class="A_name">刘红梅</span></div>
+                    <div class="col-sm-6">联系方式：<span class="A_contact">13689087654</span></div>
+                    <div class="col-sm-6">年龄：<span class="A_age">38</span></div>
+                    <div class="col-sm-6">是否听说过玫琳凯：<span class="A_hearMK">是</span></div>
+                    <div class="col-sm-6">愿意参加玫琳凯活动：<span class="A_joinEvent">是</span></div>
+                    <div class="col-sm-6">顾客身份：<span class="A_customerType">新顾客</span></div>
+                    <div class="col-sm-6">顾客职业：<span class="A_Profession">公司前台</span></div>
+                    <div class="col-sm-6">是否使用过产品：<span class="A_usedset">是</span></div>
+                    <div class="col-sm-6">顾客现场反应：<span class="A_customerResponse">一般</span></div>
+                    <div class="col-sm-6">最佳联系时间：<span class="A_bestContactDate">双休日</span></div>
+                    <div class="col-sm-6">建议时间段：<span class="A_adviceContactDate">晚上</span></div>
+                    <div class="col-sm-12">您感兴趣的话题：<span class="A_interesting">护肤美容</span></div>
+                    <div class="col-sm-12">常住地址：<span class="A_Address">浦东新区</span></div>
+                  
+                    <div class="col-sm-12">分配的志愿者：<span class="A_Dir">张美丽 / 123456789012</span></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-d-m btn-danger" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section require{
+    <script type="text/javascript">
+        require(['Views/NewCustomer'])
+
+    </script>
+}

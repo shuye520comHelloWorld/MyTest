@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4559C075-BDF4-4D90-8741-9F3AE4A5F480}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BeautyContestTW.WindowsService.Entity</RootNamespace>
+    <AssemblyName>BeautyContestTW.WindowsService.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BeautyContestTW.Entity">
+      <HintPath>..\LocalDLL\BeautyContestTW.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common">
+      <HintPath>..\packages\ServiceStack.Common.4.0.33\lib\net40\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces">
+      <HintPath>..\packages\ServiceStack.Interfaces.4.0.33\lib\portable-wp80+sl5+net40+win8+monotouch+monoandroid\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite">
+      <HintPath>..\packages\ServiceStack.OrmLite.4.0.33\lib\net45\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer">
+      <HintPath>..\packages\ServiceStack.OrmLite.SqlServer.4.0.33\lib\net45\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\packages\ServiceStack.Text.4.0.33\lib\net40\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseAlteredEntity.cs" />
+    <Compile Include="BaseEntityOperation.cs" />
+    <Compile Include="ConnectionStrings.cs" />
+    <Compile Include="Entity\DirectorRelationships.cs" />
+    <Compile Include="Entity\SpecialAwardPieceVotes.cs" />
+    <Compile Include="Entity\FctConsultantProductionsvkeep.cs" />
+    <Compile Include="Entity\FctUnitProductionsvkeep.cs" />
+    <Compile Include="Entity\InternationalConsultants.cs" />
+    <Compile Include="Entity\MyConsultants.cs" />
+    <Compile Include="Entity\WinningAwardPieceVotes.cs" />
+    <Compile Include="Operations\AppointmentTrackerOperation.cs" />
+    <Compile Include="Operations\AppointmentOperation.cs" />
+    <Compile Include="Operations\ConsultantPerformanceOperatin.cs" />
+    <Compile Include="Operations\ConsultantProductionOperation.cs" />
+    <Compile Include="Operations\ConsultantProductionTempOperation.cs" />
+    <Compile Include="Operations\ConsultantsOperation.cs" />
+    <Compile Include="Operations\ContestUnitsOpertion.cs" />
+    <Compile Include="Operations\AwardOperation.cs" />
+    <Compile Include="Operations\LotteryEventOperation.cs" />
+    <Compile Include="Operations\LotteryNotWinningOperation.cs" />
+    <Compile Include="Operations\LotteryWinningOperation.cs" />
+    <Compile Include="Operations\DimConsultantOperations.cs" />
+    <Compile Include="Operations\DirectorRelationshipsOperations.cs" />
+    <Compile Include="Operations\DirectorToNSDOperations.cs" />
+    <Compile Include="Operations\InternationalConsultantsOperation.cs" />
+    <Compile Include="Operations\MyConsultantsOperation.cs" />
+    <Compile Include="Operations\OEOrderWithPartsOperation.cs" />
+    <Compile Include="Entity\OrderWithParts.cs" />
+    <Compile Include="ExpressionCache.cs" />
+    <Compile Include="ObjectBuilder.cs" />
+    <Compile Include="Operations\OEOrderOperation.cs" />
+    <Compile Include="Operations\OrderDataExportTrackferOpertion.cs" />
+    <Compile Include="Operations\ErrorLogOpertion.cs" />
+    <Compile Include="Operations\PieceVotesOperation.cs" />
+    <Compile Include="Operations\RGOrderOperation.cs" />
+    <Compile Include="Operations\ShareLogDailyOperation.cs" />
+    <Compile Include="Operations\ShareLogOperation.cs" />
+    <Compile Include="Operations\SpecialAwardPieceVotesOperation.cs" />
+    <Compile Include="Operations\TicketOperation.cs" />
+    <Compile Include="Operations\UnitMemberOpertion.cs" />
+    <Compile Include="Operations\UnitProductionOperation.cs" />
+    <Compile Include="Operations\UnitProductionTempOperation.cs" />
+    <Compile Include="Operations\UserLotteryBanlanceOperation.cs" />
+    <Compile Include="Operations\UserOpertion.cs" />
+    <Compile Include="Operations\VoteLogDailyOperation.cs" />
+    <Compile Include="Operations\VoteLogOperation.cs" />
+    <Compile Include="Operations\VoteWeightConfigOperation.cs" />
+    <Compile Include="Operations\WinningAwardPieceVotesOperation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RepositoryHelpercs.cs" />
+    <Compile Include="Operations\SeasonConfigOperation.cs" />
+    <Compile Include="SqlHelper.cs" />
+    <Compile Include="TransactionSave.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,99 @@
+﻿@using IParty.RegisterCustomer.Mobile.Common;
+@{
+    ViewBag.Title = "【爱.Party】向幸福出发";
+    var Token = Request.QueryString["Token"] ?? "";
+    var ReferenceKey = Request.QueryString["ReferenceKey"] ?? "";
+    var apiHost = IParty.RegisterCustomer.Mobile.Common.GlobalSettings.apiHost;
+    var apiUrl = IParty.RegisterCustomer.Mobile.Common.GlobalSettings.apiUrl;
+
+}
+<link href="~/Content/SuccessCard.css" rel="stylesheet" />
+<script>
+    var pageData = {
+        Token: '@(Token)',
+        referenceKey: "@(ReferenceKey)",
+        apiHost: "@apiHost",
+        apiUrl: "@apiUrl"
+
+    };
+    //alert(ko.toJSON(pageData));
+</script>
+<header class="header">
+    
+    <div class="header-sec">
+        <h3 class="header-sec-title">亮采产品推荐礼遇日活动</h3>
+        <div class="header-item"><span class="card-icon card-icon-map"></span>
+            <p class="header-item-location" data-bind="text: WorkshopLocation"></p>
+        </div>
+        <div class="header-item hidden"><span class="card-icon card-icon-clock"></span>
+            <p class="header-item-date" data-bind="text: meetingtime"></p>
+        </div>
+        <div class="header-item"><span class="card-icon card-icon-user"></span>
+            <p class="header-item-name">邀请人 <span data-bind="text: ForwordName"></span></p>
+        </div>
+    </div>
+
+</header>
+<div id="InfoView" data-bind="visible: !showQRCode()">
+    <section class="card-form">
+        <fieldset>
+            <p class="legend">请填写您的个人信息来生成邀请卡</p>
+            <div class="pure-u-1">
+                <label for="name">姓名</label>
+                <input id="name" class="pure-u-3-4" type="text" placeholder="请填写"  data-bind="value: name">
+            </div>
+
+            <div class="pure-u-1">
+                <label for="tel">手机号码</label>
+                <input id="tel" class="pure-u-3-4" type="tel" placeholder="请填写"  data-bind="value: mobile" maxlength="11">
+            </div>
+            <div class="pure-controls">
+                <button type="button" class="pure-button pure-button-mk  btnSubmit">生成邀约卡</button>
+            </div>
+        </fieldset>
+    </section>
+    <article class="card-imgs">
+        
+        <section>
+            <img src="~/content/part3/images/secimg1.jpg" alt="">
+            <img src="~/content/part3/images/secimg2.jpg" alt="">
+            <img src="~/content/part3/images/secimg3.jpg" alt="">
+            <img src="~/content/part3/images/secimg4.jpg" alt="">
+            <img src="~/content/part3/images/secimg5.jpg" alt="">
+            <img src="~/content/part3/images/secimg6.jpg" alt="">
+        </section>
+    </article>
+    <section class="footer">
+        <a type="submit" class="pure-button pure-button-mk" href="#">我要参加</a>
+    </section>
+</div>
+<div id="MyQRCodeView" data-bind="visible: showQRCode()">
+    <section>
+    <div class="card-success1">
+        <span class="card-check">
+
+        </span>
+        <h4>
+            报名成功
+        </h4>
+        <p>
+            请在入口处出示此券
+        </p>
+    </div>
+    <div class="card-qrcode">
+       <div id="qrcode"></div>
+        <p>
+            此二维码为入场唯一凭证 <br/>
+            切勿任意转发或复制给其他顾客
+        </p>
+    </div>
+</section>
+<footer class="card-notice-footer">
+    温馨提示：记得截图保存该页面哦!
+</footer>
+</div>
+
+
+
+<script src="~/Scripts/Register.js?ss=@DateTime.Now.ToString("HHmmss")"></script>
+

@@ -1,0 +1,310 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.OAuth", "PinkBus.Services.OAuth\PinkBus.Services.OAuth.csproj", "{366A9E56-C217-496C-85FA-B4783570CA73}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.Validator", "PinkBus.Services.Validator\PinkBus.Services.Validator.csproj", "{A82A7503-96B5-46B6-A978-82B062ACB8CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.Interface", "PinkBus.Services.Interface\PinkBus.Services.Interface.csproj", "{4C57FE08-ED13-435E-B226-7548613BE18E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.Contract", "PinkBus.Services.Contract\PinkBus.Services.Contract.csproj", "{DA8D3797-D632-44CD-8CF0-4EBA2003DFC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.Entity", "PinkBus.Services.Entity\PinkBus.Services.Entity.csproj", "{3CCA15CB-277D-4676-A328-90321DBEBB63}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PinkBus.Services.DataBase", "PinkBus.Services.DataBase\PinkBus.Services.DataBase.sqlproj", "{0613F761-3076-4DDC-AAEE-CCCF8F9178ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.Infrastructure", "PinkBus.Services.Infrastructure\PinkBus.Services.Infrastructure.csproj", "{C282EF2B-2854-4300-B224-9EEDC1D5EF78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.Host", "PinkBus.Services.Host\PinkBus.Services.Host.csproj", "{F37D6685-6684-480A-82C0-77A939D89C88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.Common", "PinkBus.Services.Common\PinkBus.Services.Common.csproj", "{78C99D71-A659-438E-9694-BD8F0D6B0DE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.Infrastructure.Test", "PinkBus.Services.Infrastructure.Test\PinkBus.Services.Infrastructure.Test.csproj", "{21961E7B-398C-40E9-8793-742BEFF6534E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.API", "PinkBus.Services.API\PinkBus.Services.API.csproj", "{444CCF48-CC73-4AA2-BAAD-EF44AFFFF3EE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExternalService", "ExternalService", "{3D42AD97-1C49-417A-B645-614A1D335AC0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientService", "ClientService", "{883E221F-AA4D-468A-BED1-AE63083FD426}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.ClientService.Infrastructure", "PinkBus.ClientService.Infrastructure\PinkBus.ClientService.Infrastructure.csproj", "{6297F261-6A5E-433B-A64E-060F943346EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.ClientService.Interface", "PinkBus.ClientService.Interface\PinkBus.ClientService.Interface.csproj", "{FACEE086-4215-4628-B878-F516D4095538}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.ClientService.Validator", "PinkBus.ClientService.Validator\PinkBus.ClientService.Validator.csproj", "{F68C8AF7-5653-4735-A4DB-DA6653F95379}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.ClientService.Contract", "PinkBus.ClientService.Contract\PinkBus.ClientService.Contract.csproj", "{3988FEE6-8407-4A04-BC1E-C6E965345C85}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.ClientService.Host", "PinkBus.ClientService.Host\PinkBus.ClientService.Host.csproj", "{E0FC22EA-134D-4219-BD66-3AF782DCD923}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.ClientService.API", "PinkBus.ClientService.API\PinkBus.ClientService.API.csproj", "{86AEFD6F-B17D-49D4-9348-DB61CD6DBF25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.ClientService.Infrastructure.Test", "PinkBus.ClientService.Infrastructure.Test\PinkBus.ClientService.Infrastructure.Test.csproj", "{E7A69EEB-A769-4AC0-8EF0-66B53EACE84A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InternalService", "InternalService", "{F3FAE616-76E8-4A6C-A4F1-4F9A20C14AF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.Internal.API", "PinkBus.Services.Internal.API\PinkBus.Services.Internal.API.csproj", "{9FA30275-6357-4D6B-81BC-7D2DE770AF45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.Internal.Host", "PinkBus.Services.Internal.Host\PinkBus.Services.Internal.Host.csproj", "{11CB0006-D41B-4D83-9083-7EB9FC7433B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.Internal.Infrastructure", "PinkBus.Services.Internal.Infrastructure\PinkBus.Services.Internal.Infrastructure.csproj", "{F1DE4C57-7382-4F54-B42B-E7C67074C333}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.Internal.Contract", "PinkBus.Services.Internal.Contract\PinkBus.Services.Internal.Contract.csproj", "{CC513B19-776A-45A7-8095-79608E41057F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.Internal.Validator", "PinkBus.Services.Internal.Validator\PinkBus.Services.Internal.Validator.csproj", "{7E3C7ED6-C404-46F6-9811-AF0EA1121D06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.Internal.Interface", "PinkBus.Services.Internal.Interface\PinkBus.Services.Internal.Interface.csproj", "{CFD04BFE-CE8F-4FE9-A87F-610F9E7FCC99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.H5.Host", "PinkBus.Services.H5.Host\PinkBus.Services.H5.Host.csproj", "{A47B93E5-3F85-41A5-A0AC-D0D4BD9F96B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PinkBus.Services.H5.API", "PinkBus.Services.H5.API\PinkBus.Services.H5.API.csproj", "{1BCF4C54-95C0-46F8-BD4E-2743D0F8B565}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 27
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.mkcorp.com:8080/tfs/upgradedcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PinkBus.ClientService.API\\PinkBus.ClientService.API.csproj
+		SccProjectTopLevelParentUniqueName1 = PinkBus.Services.sln
+		SccProjectName1 = PinkBus.ClientService.API
+		SccLocalPath1 = PinkBus.ClientService.API
+		SccProjectUniqueName2 = PinkBus.ClientService.Contract\\PinkBus.ClientService.Contract.csproj
+		SccProjectTopLevelParentUniqueName2 = PinkBus.Services.sln
+		SccProjectName2 = PinkBus.ClientService.Contract
+		SccLocalPath2 = PinkBus.ClientService.Contract
+		SccProjectUniqueName3 = PinkBus.ClientService.Host\\PinkBus.ClientService.Host.csproj
+		SccProjectTopLevelParentUniqueName3 = PinkBus.Services.sln
+		SccProjectName3 = PinkBus.ClientService.Host
+		SccLocalPath3 = PinkBus.ClientService.Host
+		SccProjectUniqueName4 = PinkBus.ClientService.Infrastructure.Test\\PinkBus.ClientService.Infrastructure.Test.csproj
+		SccProjectTopLevelParentUniqueName4 = PinkBus.Services.sln
+		SccProjectName4 = PinkBus.ClientService.Infrastructure.Test
+		SccLocalPath4 = PinkBus.ClientService.Infrastructure.Test
+		SccProjectUniqueName5 = PinkBus.ClientService.Infrastructure\\PinkBus.ClientService.Infrastructure.csproj
+		SccProjectTopLevelParentUniqueName5 = PinkBus.Services.sln
+		SccProjectName5 = PinkBus.ClientService.Infrastructure
+		SccLocalPath5 = PinkBus.ClientService.Infrastructure
+		SccProjectUniqueName6 = PinkBus.ClientService.Interface\\PinkBus.ClientService.Interface.csproj
+		SccProjectTopLevelParentUniqueName6 = PinkBus.Services.sln
+		SccProjectName6 = PinkBus.ClientService.Interface
+		SccLocalPath6 = PinkBus.ClientService.Interface
+		SccProjectUniqueName7 = PinkBus.ClientService.Validator\\PinkBus.ClientService.Validator.csproj
+		SccProjectTopLevelParentUniqueName7 = PinkBus.Services.sln
+		SccProjectName7 = PinkBus.ClientService.Validator
+		SccLocalPath7 = PinkBus.ClientService.Validator
+		SccProjectUniqueName8 = PinkBus.Services.API\\PinkBus.Services.API.csproj
+		SccProjectTopLevelParentUniqueName8 = PinkBus.Services.sln
+		SccProjectName8 = PinkBus.Services.API
+		SccLocalPath8 = PinkBus.Services.API
+		SccProjectUniqueName9 = PinkBus.Services.Common\\PinkBus.Services.Common.csproj
+		SccProjectName9 = PinkBus.Services.Common
+		SccLocalPath9 = PinkBus.Services.Common
+		SccProjectUniqueName10 = PinkBus.Services.Contract\\PinkBus.Services.Contract.csproj
+		SccProjectTopLevelParentUniqueName10 = PinkBus.Services.sln
+		SccProjectName10 = PinkBus.Services.Contract
+		SccLocalPath10 = PinkBus.Services.Contract
+		SccProjectUniqueName11 = PinkBus.Services.DataBase\\PinkBus.Services.DataBase.sqlproj
+		SccProjectName11 = PinkBus.Services.DataBase
+		SccLocalPath11 = PinkBus.Services.DataBase
+		SccProjectUniqueName12 = PinkBus.Services.Entity\\PinkBus.Services.Entity.csproj
+		SccProjectName12 = PinkBus.Services.Entity
+		SccLocalPath12 = PinkBus.Services.Entity
+		SccProjectUniqueName13 = PinkBus.Services.Host\\PinkBus.Services.Host.csproj
+		SccProjectTopLevelParentUniqueName13 = PinkBus.Services.sln
+		SccProjectName13 = PinkBus.Services.Host
+		SccLocalPath13 = PinkBus.Services.Host
+		SccProjectUniqueName14 = PinkBus.Services.Infrastructure.Test\\PinkBus.Services.Infrastructure.Test.csproj
+		SccProjectTopLevelParentUniqueName14 = PinkBus.Services.sln
+		SccProjectName14 = PinkBus.Services.Infrastructure.Test
+		SccLocalPath14 = PinkBus.Services.Infrastructure.Test
+		SccProjectUniqueName15 = PinkBus.Services.Infrastructure\\PinkBus.Services.Infrastructure.csproj
+		SccProjectTopLevelParentUniqueName15 = PinkBus.Services.sln
+		SccProjectName15 = PinkBus.Services.Infrastructure
+		SccLocalPath15 = PinkBus.Services.Infrastructure
+		SccProjectUniqueName16 = PinkBus.Services.Interface\\PinkBus.Services.Interface.csproj
+		SccProjectTopLevelParentUniqueName16 = PinkBus.Services.sln
+		SccProjectName16 = PinkBus.Services.Interface
+		SccLocalPath16 = PinkBus.Services.Interface
+		SccProjectUniqueName17 = PinkBus.Services.OAuth\\PinkBus.Services.OAuth.csproj
+		SccProjectName17 = PinkBus.Services.OAuth
+		SccLocalPath17 = PinkBus.Services.OAuth
+		SccProjectUniqueName18 = PinkBus.Services.Validator\\PinkBus.Services.Validator.csproj
+		SccProjectTopLevelParentUniqueName18 = PinkBus.Services.sln
+		SccProjectName18 = PinkBus.Services.Validator
+		SccLocalPath18 = PinkBus.Services.Validator
+		SccProjectUniqueName19 = PinkBus.Services.Internal.Host\\PinkBus.Services.Internal.Host.csproj
+		SccProjectTopLevelParentUniqueName19 = PinkBus.Services.sln
+		SccProjectName19 = PinkBus.Services.Internal.Host
+		SccLocalPath19 = PinkBus.Services.Internal.Host
+		SccProjectUniqueName20 = PinkBus.Services.Internal.Infrastructure\\PinkBus.Services.Internal.Infrastructure.csproj
+		SccProjectTopLevelParentUniqueName20 = PinkBus.Services.sln
+		SccProjectName20 = PinkBus.Services.Internal.Infrastructure
+		SccLocalPath20 = PinkBus.Services.Internal.Infrastructure
+		SccProjectUniqueName21 = PinkBus.Services.Internal.Contract\\PinkBus.Services.Internal.Contract.csproj
+		SccProjectTopLevelParentUniqueName21 = PinkBus.Services.sln
+		SccProjectName21 = PinkBus.Services.Internal.Contract
+		SccLocalPath21 = PinkBus.Services.Internal.Contract
+		SccProjectUniqueName22 = PinkBus.Services.Internal.Validator\\PinkBus.Services.Internal.Validator.csproj
+		SccProjectTopLevelParentUniqueName22 = PinkBus.Services.sln
+		SccProjectName22 = PinkBus.Services.Internal.Validator
+		SccLocalPath22 = PinkBus.Services.Internal.Validator
+		SccProjectUniqueName23 = PinkBus.Services.Internal.Interface\\PinkBus.Services.Internal.Interface.csproj
+		SccProjectTopLevelParentUniqueName23 = PinkBus.Services.sln
+		SccProjectName23 = PinkBus.Services.Internal.Interface
+		SccLocalPath23 = PinkBus.Services.Internal.Interface
+		SccProjectUniqueName24 = PinkBus.Services.Internal.API\\PinkBus.Services.Internal.API.csproj
+		SccProjectTopLevelParentUniqueName24 = PinkBus.Services.sln
+		SccProjectName24 = PinkBus.Services.Internal.API
+		SccLocalPath24 = PinkBus.Services.Internal.API
+		SccProjectUniqueName25 = PinkBus.Services.H5.Host\\PinkBus.Services.H5.Host.csproj
+		SccProjectTopLevelParentUniqueName25 = PinkBus.Services.sln
+		SccProjectName25 = PinkBus.Services.H5.Host
+		SccLocalPath25 = PinkBus.Services.H5.Host
+		SccProjectUniqueName26 = PinkBus.Services.H5.API\\PinkBus.Services.H5.API.csproj
+		SccProjectTopLevelParentUniqueName26 = PinkBus.Services.sln
+		SccProjectName26 = PinkBus.Services.H5.API
+		SccLocalPath26 = PinkBus.Services.H5.API
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{366A9E56-C217-496C-85FA-B4783570CA73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{366A9E56-C217-496C-85FA-B4783570CA73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{366A9E56-C217-496C-85FA-B4783570CA73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{366A9E56-C217-496C-85FA-B4783570CA73}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A82A7503-96B5-46B6-A978-82B062ACB8CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A82A7503-96B5-46B6-A978-82B062ACB8CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A82A7503-96B5-46B6-A978-82B062ACB8CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A82A7503-96B5-46B6-A978-82B062ACB8CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C57FE08-ED13-435E-B226-7548613BE18E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C57FE08-ED13-435E-B226-7548613BE18E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C57FE08-ED13-435E-B226-7548613BE18E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C57FE08-ED13-435E-B226-7548613BE18E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA8D3797-D632-44CD-8CF0-4EBA2003DFC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA8D3797-D632-44CD-8CF0-4EBA2003DFC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA8D3797-D632-44CD-8CF0-4EBA2003DFC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA8D3797-D632-44CD-8CF0-4EBA2003DFC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CCA15CB-277D-4676-A328-90321DBEBB63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CCA15CB-277D-4676-A328-90321DBEBB63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CCA15CB-277D-4676-A328-90321DBEBB63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CCA15CB-277D-4676-A328-90321DBEBB63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0613F761-3076-4DDC-AAEE-CCCF8F9178ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0613F761-3076-4DDC-AAEE-CCCF8F9178ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0613F761-3076-4DDC-AAEE-CCCF8F9178ED}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0613F761-3076-4DDC-AAEE-CCCF8F9178ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0613F761-3076-4DDC-AAEE-CCCF8F9178ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0613F761-3076-4DDC-AAEE-CCCF8F9178ED}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C282EF2B-2854-4300-B224-9EEDC1D5EF78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C282EF2B-2854-4300-B224-9EEDC1D5EF78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C282EF2B-2854-4300-B224-9EEDC1D5EF78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C282EF2B-2854-4300-B224-9EEDC1D5EF78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F37D6685-6684-480A-82C0-77A939D89C88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F37D6685-6684-480A-82C0-77A939D89C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F37D6685-6684-480A-82C0-77A939D89C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F37D6685-6684-480A-82C0-77A939D89C88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78C99D71-A659-438E-9694-BD8F0D6B0DE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78C99D71-A659-438E-9694-BD8F0D6B0DE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78C99D71-A659-438E-9694-BD8F0D6B0DE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78C99D71-A659-438E-9694-BD8F0D6B0DE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21961E7B-398C-40E9-8793-742BEFF6534E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21961E7B-398C-40E9-8793-742BEFF6534E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21961E7B-398C-40E9-8793-742BEFF6534E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21961E7B-398C-40E9-8793-742BEFF6534E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{444CCF48-CC73-4AA2-BAAD-EF44AFFFF3EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{444CCF48-CC73-4AA2-BAAD-EF44AFFFF3EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{444CCF48-CC73-4AA2-BAAD-EF44AFFFF3EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{444CCF48-CC73-4AA2-BAAD-EF44AFFFF3EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6297F261-6A5E-433B-A64E-060F943346EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6297F261-6A5E-433B-A64E-060F943346EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6297F261-6A5E-433B-A64E-060F943346EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6297F261-6A5E-433B-A64E-060F943346EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FACEE086-4215-4628-B878-F516D4095538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FACEE086-4215-4628-B878-F516D4095538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FACEE086-4215-4628-B878-F516D4095538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FACEE086-4215-4628-B878-F516D4095538}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F68C8AF7-5653-4735-A4DB-DA6653F95379}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F68C8AF7-5653-4735-A4DB-DA6653F95379}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F68C8AF7-5653-4735-A4DB-DA6653F95379}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F68C8AF7-5653-4735-A4DB-DA6653F95379}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3988FEE6-8407-4A04-BC1E-C6E965345C85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3988FEE6-8407-4A04-BC1E-C6E965345C85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3988FEE6-8407-4A04-BC1E-C6E965345C85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3988FEE6-8407-4A04-BC1E-C6E965345C85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0FC22EA-134D-4219-BD66-3AF782DCD923}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0FC22EA-134D-4219-BD66-3AF782DCD923}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0FC22EA-134D-4219-BD66-3AF782DCD923}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0FC22EA-134D-4219-BD66-3AF782DCD923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86AEFD6F-B17D-49D4-9348-DB61CD6DBF25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86AEFD6F-B17D-49D4-9348-DB61CD6DBF25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86AEFD6F-B17D-49D4-9348-DB61CD6DBF25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86AEFD6F-B17D-49D4-9348-DB61CD6DBF25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7A69EEB-A769-4AC0-8EF0-66B53EACE84A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A69EEB-A769-4AC0-8EF0-66B53EACE84A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A69EEB-A769-4AC0-8EF0-66B53EACE84A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A69EEB-A769-4AC0-8EF0-66B53EACE84A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FA30275-6357-4D6B-81BC-7D2DE770AF45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FA30275-6357-4D6B-81BC-7D2DE770AF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FA30275-6357-4D6B-81BC-7D2DE770AF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FA30275-6357-4D6B-81BC-7D2DE770AF45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11CB0006-D41B-4D83-9083-7EB9FC7433B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11CB0006-D41B-4D83-9083-7EB9FC7433B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11CB0006-D41B-4D83-9083-7EB9FC7433B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11CB0006-D41B-4D83-9083-7EB9FC7433B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1DE4C57-7382-4F54-B42B-E7C67074C333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1DE4C57-7382-4F54-B42B-E7C67074C333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1DE4C57-7382-4F54-B42B-E7C67074C333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1DE4C57-7382-4F54-B42B-E7C67074C333}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC513B19-776A-45A7-8095-79608E41057F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC513B19-776A-45A7-8095-79608E41057F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC513B19-776A-45A7-8095-79608E41057F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC513B19-776A-45A7-8095-79608E41057F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E3C7ED6-C404-46F6-9811-AF0EA1121D06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E3C7ED6-C404-46F6-9811-AF0EA1121D06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E3C7ED6-C404-46F6-9811-AF0EA1121D06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E3C7ED6-C404-46F6-9811-AF0EA1121D06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFD04BFE-CE8F-4FE9-A87F-610F9E7FCC99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD04BFE-CE8F-4FE9-A87F-610F9E7FCC99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD04BFE-CE8F-4FE9-A87F-610F9E7FCC99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD04BFE-CE8F-4FE9-A87F-610F9E7FCC99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A47B93E5-3F85-41A5-A0AC-D0D4BD9F96B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A47B93E5-3F85-41A5-A0AC-D0D4BD9F96B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A47B93E5-3F85-41A5-A0AC-D0D4BD9F96B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A47B93E5-3F85-41A5-A0AC-D0D4BD9F96B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BCF4C54-95C0-46F8-BD4E-2743D0F8B565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BCF4C54-95C0-46F8-BD4E-2743D0F8B565}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BCF4C54-95C0-46F8-BD4E-2743D0F8B565}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BCF4C54-95C0-46F8-BD4E-2743D0F8B565}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A82A7503-96B5-46B6-A978-82B062ACB8CC} = {3D42AD97-1C49-417A-B645-614A1D335AC0}
+		{4C57FE08-ED13-435E-B226-7548613BE18E} = {3D42AD97-1C49-417A-B645-614A1D335AC0}
+		{DA8D3797-D632-44CD-8CF0-4EBA2003DFC0} = {3D42AD97-1C49-417A-B645-614A1D335AC0}
+		{C282EF2B-2854-4300-B224-9EEDC1D5EF78} = {3D42AD97-1C49-417A-B645-614A1D335AC0}
+		{F37D6685-6684-480A-82C0-77A939D89C88} = {3D42AD97-1C49-417A-B645-614A1D335AC0}
+		{21961E7B-398C-40E9-8793-742BEFF6534E} = {3D42AD97-1C49-417A-B645-614A1D335AC0}
+		{444CCF48-CC73-4AA2-BAAD-EF44AFFFF3EE} = {3D42AD97-1C49-417A-B645-614A1D335AC0}
+		{6297F261-6A5E-433B-A64E-060F943346EF} = {883E221F-AA4D-468A-BED1-AE63083FD426}
+		{FACEE086-4215-4628-B878-F516D4095538} = {883E221F-AA4D-468A-BED1-AE63083FD426}
+		{F68C8AF7-5653-4735-A4DB-DA6653F95379} = {883E221F-AA4D-468A-BED1-AE63083FD426}
+		{3988FEE6-8407-4A04-BC1E-C6E965345C85} = {883E221F-AA4D-468A-BED1-AE63083FD426}
+		{E0FC22EA-134D-4219-BD66-3AF782DCD923} = {883E221F-AA4D-468A-BED1-AE63083FD426}
+		{86AEFD6F-B17D-49D4-9348-DB61CD6DBF25} = {883E221F-AA4D-468A-BED1-AE63083FD426}
+		{E7A69EEB-A769-4AC0-8EF0-66B53EACE84A} = {883E221F-AA4D-468A-BED1-AE63083FD426}
+		{9FA30275-6357-4D6B-81BC-7D2DE770AF45} = {F3FAE616-76E8-4A6C-A4F1-4F9A20C14AF7}
+		{11CB0006-D41B-4D83-9083-7EB9FC7433B0} = {F3FAE616-76E8-4A6C-A4F1-4F9A20C14AF7}
+		{F1DE4C57-7382-4F54-B42B-E7C67074C333} = {F3FAE616-76E8-4A6C-A4F1-4F9A20C14AF7}
+		{CC513B19-776A-45A7-8095-79608E41057F} = {F3FAE616-76E8-4A6C-A4F1-4F9A20C14AF7}
+		{7E3C7ED6-C404-46F6-9811-AF0EA1121D06} = {F3FAE616-76E8-4A6C-A4F1-4F9A20C14AF7}
+		{CFD04BFE-CE8F-4FE9-A87F-610F9E7FCC99} = {F3FAE616-76E8-4A6C-A4F1-4F9A20C14AF7}
+		{A47B93E5-3F85-41A5-A0AC-D0D4BD9F96B7} = {3D42AD97-1C49-417A-B645-614A1D335AC0}
+		{1BCF4C54-95C0-46F8-BD4E-2743D0F8B565} = {3D42AD97-1C49-417A-B645-614A1D335AC0}
+	EndGlobalSection
+EndGlobal

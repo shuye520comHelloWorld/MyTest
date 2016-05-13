@@ -1,0 +1,130 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InternalService", "InternalService", "{13EC1112-354A-4DD3-9EF3-EB1752C202B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IParty.Services.Internal.API", "IParty.Services.Internal.API\IParty.Services.Internal.API.csproj", "{3D998F68-A992-4444-BEEB-EEEC842B2641}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IParty.Services.Entity", "IParty.Services.Entity\IParty.Services.Entity.csproj", "{78693E6F-8F53-4CF8-988B-04741D10D9A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IParty.Services.OAuth", "IParty.Services.OAuth\IParty.Services.OAuth.csproj", "{A8391F30-7391-4012-A26D-F86E09877CCC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IParty.Services.Internal.Contract", "IParty.Services.Internal.Contract\IParty.Services.Internal.Contract.csproj", "{16E34902-BE77-414B-9770-8D7FAD1144F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IParty.Services.Internal.Infrastructure", "IParty.Services.Internal.Infrastructure\IParty.Services.Internal.Infrastructure.csproj", "{9FE26E81-FC5C-413D-BBA2-1E23CDC24C7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IParty.Services.Internal.Interface", "IParty.Services.Internal.Interface\IParty.Services.Internal.Interface.csproj", "{672B9912-C000-4B99-B9DA-F64C5B17F0BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IParty.Services.Internal.Validator", "IParty.Services.Internal.Validator\IParty.Services.Internal.Validator.csproj", "{38D19679-D2A7-4285-A1AF-F604CE7B6B8E}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "IParty.Services.DataBase", "IParty.Services.DataBase\IParty.Services.DataBase.sqlproj", "{F135F357-38BE-44A8-A0F7-111F91A02DBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IParty.Services.Common", "IParty.Services.Common\IParty.Services.Common.csproj", "{EDDA7BBA-01B3-4CCF-9AE5-F604494DC561}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IParty.Services.Internal.Host", "IParty.Services.Internal.Host\IParty.Services.Internal.Host.csproj", "{96A20C8E-1E7A-4E0A-ADDF-3A1A5D5BE734}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 11
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfs.mkcorp.com:8080/tfs/upgradedcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = IParty.Services.Common\\IParty.Services.Common.csproj
+		SccProjectName1 = IParty.Services.Common
+		SccLocalPath1 = IParty.Services.Common
+		SccProjectUniqueName2 = IParty.Services.DataBase\\IParty.Services.DataBase.sqlproj
+		SccProjectName2 = IParty.Services.DataBase
+		SccLocalPath2 = IParty.Services.DataBase
+		SccProjectUniqueName3 = IParty.Services.Entity\\IParty.Services.Entity.csproj
+		SccProjectName3 = IParty.Services.Entity
+		SccLocalPath3 = IParty.Services.Entity
+		SccProjectUniqueName4 = IParty.Services.Internal.API\\IParty.Services.Internal.API.csproj
+		SccProjectTopLevelParentUniqueName4 = IParty.Services.Internal.sln
+		SccProjectName4 = IParty.Services.Internal.API
+		SccLocalPath4 = IParty.Services.Internal.API
+		SccProjectUniqueName5 = IParty.Services.Internal.Contract\\IParty.Services.Internal.Contract.csproj
+		SccProjectTopLevelParentUniqueName5 = IParty.Services.Internal.sln
+		SccProjectName5 = IParty.Services.Internal.Contract
+		SccLocalPath5 = IParty.Services.Internal.Contract
+		SccProjectUniqueName6 = IParty.Services.Internal.Host\\IParty.Services.Internal.Host.csproj
+		SccProjectTopLevelParentUniqueName6 = IParty.Services.Internal.sln
+		SccProjectName6 = IParty.Services.Internal.Host
+		SccLocalPath6 = IParty.Services.Internal.Host
+		SccProjectUniqueName7 = IParty.Services.Internal.Infrastructure\\IParty.Services.Internal.Infrastructure.csproj
+		SccProjectTopLevelParentUniqueName7 = IParty.Services.Internal.sln
+		SccProjectName7 = IParty.Services.Internal.Infrastructure
+		SccLocalPath7 = IParty.Services.Internal.Infrastructure
+		SccProjectUniqueName8 = IParty.Services.Internal.Interface\\IParty.Services.Internal.Interface.csproj
+		SccProjectTopLevelParentUniqueName8 = IParty.Services.Internal.sln
+		SccProjectName8 = IParty.Services.Internal.Interface
+		SccLocalPath8 = IParty.Services.Internal.Interface
+		SccProjectUniqueName9 = IParty.Services.Internal.Validator\\IParty.Services.Internal.Validator.csproj
+		SccProjectTopLevelParentUniqueName9 = IParty.Services.Internal.sln
+		SccProjectName9 = IParty.Services.Internal.Validator
+		SccLocalPath9 = IParty.Services.Internal.Validator
+		SccProjectUniqueName10 = IParty.Services.OAuth\\IParty.Services.OAuth.csproj
+		SccProjectName10 = IParty.Services.OAuth
+		SccLocalPath10 = IParty.Services.OAuth
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D998F68-A992-4444-BEEB-EEEC842B2641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D998F68-A992-4444-BEEB-EEEC842B2641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D998F68-A992-4444-BEEB-EEEC842B2641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D998F68-A992-4444-BEEB-EEEC842B2641}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78693E6F-8F53-4CF8-988B-04741D10D9A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78693E6F-8F53-4CF8-988B-04741D10D9A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78693E6F-8F53-4CF8-988B-04741D10D9A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78693E6F-8F53-4CF8-988B-04741D10D9A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8391F30-7391-4012-A26D-F86E09877CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8391F30-7391-4012-A26D-F86E09877CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8391F30-7391-4012-A26D-F86E09877CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8391F30-7391-4012-A26D-F86E09877CCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16E34902-BE77-414B-9770-8D7FAD1144F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16E34902-BE77-414B-9770-8D7FAD1144F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16E34902-BE77-414B-9770-8D7FAD1144F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16E34902-BE77-414B-9770-8D7FAD1144F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FE26E81-FC5C-413D-BBA2-1E23CDC24C7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FE26E81-FC5C-413D-BBA2-1E23CDC24C7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FE26E81-FC5C-413D-BBA2-1E23CDC24C7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FE26E81-FC5C-413D-BBA2-1E23CDC24C7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{672B9912-C000-4B99-B9DA-F64C5B17F0BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672B9912-C000-4B99-B9DA-F64C5B17F0BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672B9912-C000-4B99-B9DA-F64C5B17F0BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672B9912-C000-4B99-B9DA-F64C5B17F0BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38D19679-D2A7-4285-A1AF-F604CE7B6B8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38D19679-D2A7-4285-A1AF-F604CE7B6B8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38D19679-D2A7-4285-A1AF-F604CE7B6B8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38D19679-D2A7-4285-A1AF-F604CE7B6B8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F135F357-38BE-44A8-A0F7-111F91A02DBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F135F357-38BE-44A8-A0F7-111F91A02DBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F135F357-38BE-44A8-A0F7-111F91A02DBF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F135F357-38BE-44A8-A0F7-111F91A02DBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F135F357-38BE-44A8-A0F7-111F91A02DBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F135F357-38BE-44A8-A0F7-111F91A02DBF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{EDDA7BBA-01B3-4CCF-9AE5-F604494DC561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDDA7BBA-01B3-4CCF-9AE5-F604494DC561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDDA7BBA-01B3-4CCF-9AE5-F604494DC561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDDA7BBA-01B3-4CCF-9AE5-F604494DC561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96A20C8E-1E7A-4E0A-ADDF-3A1A5D5BE734}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96A20C8E-1E7A-4E0A-ADDF-3A1A5D5BE734}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96A20C8E-1E7A-4E0A-ADDF-3A1A5D5BE734}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96A20C8E-1E7A-4E0A-ADDF-3A1A5D5BE734}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3D998F68-A992-4444-BEEB-EEEC842B2641} = {13EC1112-354A-4DD3-9EF3-EB1752C202B0}
+		{16E34902-BE77-414B-9770-8D7FAD1144F5} = {13EC1112-354A-4DD3-9EF3-EB1752C202B0}
+		{9FE26E81-FC5C-413D-BBA2-1E23CDC24C7B} = {13EC1112-354A-4DD3-9EF3-EB1752C202B0}
+		{672B9912-C000-4B99-B9DA-F64C5B17F0BA} = {13EC1112-354A-4DD3-9EF3-EB1752C202B0}
+		{38D19679-D2A7-4285-A1AF-F604CE7B6B8E} = {13EC1112-354A-4DD3-9EF3-EB1752C202B0}
+		{96A20C8E-1E7A-4E0A-ADDF-3A1A5D5BE734} = {13EC1112-354A-4DD3-9EF3-EB1752C202B0}
+	EndGlobalSection
+EndGlobal

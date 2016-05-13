@@ -1,0 +1,1 @@
+D:\eCommerce\ChinaLocal App\dev\Iparty_PortalChangeUserPermissions\IParty.RegisterCustomer.Mobile\IParty.RegisterCustomer.Mobile\obj\Debug\IParty.RegisterCustomer.Mobile.csprojResolveAssemblyReference.cache
