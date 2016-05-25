@@ -1,8 +1,0 @@
-D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.CustomerH5\PinkBus.CustomerH5\WechatH5Helper\bin\Debug\WechatH5Helper.dll
-D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.CustomerH5\PinkBus.CustomerH5\WechatH5Helper\bin\Debug\WechatH5Helper.pdb
-D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.CustomerH5\PinkBus.CustomerH5\WechatH5Helper\bin\Debug\Newtonsoft.Json.dll
-D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.CustomerH5\PinkBus.CustomerH5\WechatH5Helper\bin\Debug\NLog.dll
-D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.CustomerH5\PinkBus.CustomerH5\WechatH5Helper\bin\Debug\NLog.xml
-D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.CustomerH5\PinkBus.CustomerH5\WechatH5Helper\obj\Debug\WechatH5Helper.csprojResolveAssemblyReference.cache
-D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.CustomerH5\PinkBus.CustomerH5\WechatH5Helper\obj\Debug\WechatH5Helper.dll
-D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.CustomerH5\PinkBus.CustomerH5\WechatH5Helper\obj\Debug\WechatH5Helper.pdb

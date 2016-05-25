@@ -1,1 +1,0 @@
-C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\installutil.exe /u /ConfigPath="%CD%\Service1.xml" "%CD%\MaryKay.ServiceHost.exe"

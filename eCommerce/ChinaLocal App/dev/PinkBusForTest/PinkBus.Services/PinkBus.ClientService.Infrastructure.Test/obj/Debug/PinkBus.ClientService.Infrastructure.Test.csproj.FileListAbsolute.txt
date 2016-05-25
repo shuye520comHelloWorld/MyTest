@@ -1,5 +1,0 @@
-D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.Services\PinkBus.ClientService.Infrastructure.Test\bin\Debug\PinkBus.ClientServices.Infrastructure.Test.dll
-D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.Services\PinkBus.ClientService.Infrastructure.Test\bin\Debug\PinkBus.ClientServices.Infrastructure.Test.pdb
-D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.Services\PinkBus.ClientService.Infrastructure.Test\obj\Debug\PinkBus.ClientService.Infrastructure.Test.csprojResolveAssemblyReference.cache
-D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.Services\PinkBus.ClientService.Infrastructure.Test\obj\Debug\PinkBus.ClientServices.Infrastructure.Test.dll
-D:\eCommerce\ChinaLocal App\dev\PinkBusForTest\PinkBus.Services\PinkBus.ClientService.Infrastructure.Test\obj\Debug\PinkBus.ClientServices.Infrastructure.Test.pdb
